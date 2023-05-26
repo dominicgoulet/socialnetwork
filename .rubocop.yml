@@ -1,0 +1,16 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/{bundle,rails,rake,setup}'
+  NewCops: enable
+
+Metrics/AbcSize:
+  CountRepeatedAttributes: false
+
+Metrics/MethodLength:
+  CountAsOne: ['array', 'heredoc', 'hash', 'method_call']
+
+Style/Documentation:
+  Enabled: false
