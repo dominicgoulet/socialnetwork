@@ -4,7 +4,7 @@
 class SessionsController < ApplicationController
   extend T::Sig
 
-  before_action :authenticate_user!, only: %i[update destroy]
+  before_action :authenticate_user!, only: %i[destroy]
 
   sig { void }
   def new; end

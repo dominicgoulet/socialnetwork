@@ -9,7 +9,7 @@ class OrganizationsController < ApplicationController
 
   sig { void }
   def index
-    @organizations = T.let(Organization.all, T.nilable(Organization::PrivateRelation))
+    @organizations = T.let(Organization.all, T.nilable(ActiveRecord::Relation))
   end
 
   sig { void }

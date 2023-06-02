@@ -19,32 +19,31 @@ require 'test_helper'
 class MembershipTest < ActiveSupport::TestCase
   extend T::Sig
 
-  sig { void }
-  def setup
-    @membership = T.let(memberships(:valid), T.nilable(Membership))
+  setup do
+    @membership = T.let(memberships(:valid), Membership)
   end
 
   test 'valid membership' do
-    assert T.must(@membership).valid?
+    assert @membership.valid?
   end
 
   test 'invalid without a user' do
-    T.must(@membership).user = nil
+    @membership.user = nil
 
-    refute T.must(@membership).valid?
-    assert_not_nil T.must(@membership).errors[:user]
+    refute @membership.valid?
+    assert_not_nil @membership.errors[:user]
   end
 
   test 'invalid without an organization' do
-    T.must(@membership).organization = nil
+    @membership.organization = nil
 
-    refute T.must(@membership).valid?
-    assert_not_nil T.must(@membership).errors[:organization]
+    refute @membership.valid?
+    assert_not_nil @membership.errors[:organization]
   end
 
   test '.confirm! sets a confirmed_at and returns true' do
-    assert T.must(@membership).confirmed_at.blank?
-    assert T.must(@membership).confirm!
-    assert T.must(@membership).confirmed_at.present?
+    assert @membership.confirmed_at.blank?
+    assert @membership.confirm!
+    assert @membership.confirmed_at.present?
   end
 end

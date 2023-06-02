@@ -2237,6 +2237,7 @@ module ActionController::Base::HelperMethods
   include ::ActionView::Helpers::OutputSafetyHelper
   include ::ActionView::Helpers::TagHelper
   include ::Turbo::Streams::ActionHelper
+  include ::Hotwire::Livereload::LivereloadTagsHelper
 
   # source://actionpack//lib/action_controller/metal/flash.rb#39
   def alert(*args, **_arg1, &block); end

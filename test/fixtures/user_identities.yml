@@ -11,6 +11,6 @@
 #
 
 valid:
-  user: valid
+  user: darth_vader
   provider: MyString
   uid: MyString

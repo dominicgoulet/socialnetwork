@@ -9,16 +9,22 @@ module GeneratedUrlHelpersModule
   include ::ActionDispatch::Routing::PolymorphicRoutes
 
   sig { params(args: T.untyped).returns(String) }
-  def accept_invitation_url(*args); end
+  def accept_invitation_registrations_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def auth_failure_url(*args); end
+  def cancel_email_change_registrations_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def cancel_email_change_url(*args); end
+  def confirm_registration_registrations_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def confirm_registration_url(*args); end
+  def edit_organization_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_password_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_profile_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def edit_rails_conductor_inbound_email_url(*args); end
@@ -30,10 +36,22 @@ module GeneratedUrlHelpersModule
   def memberships_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def new_organization_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def new_rails_conductor_inbound_email_source_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_rails_conductor_inbound_email_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_registration_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def omniauth_callback_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def omniauth_failure_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def organization_url(*args); end
@@ -42,7 +60,13 @@ module GeneratedUrlHelpersModule
   def organizations_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def password_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def passwords_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def profile_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def rails_blob_representation_proxy_url(*args); end

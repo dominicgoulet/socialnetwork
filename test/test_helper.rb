@@ -4,6 +4,7 @@
 unless ENV['NO_COVERAGE']
   require 'simplecov'
   SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
+  SimpleCov.add_group 'Interactors', 'app/interactors'
   SimpleCov.start 'rails'
 end
 

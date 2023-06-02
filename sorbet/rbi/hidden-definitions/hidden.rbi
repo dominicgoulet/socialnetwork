@@ -27,6 +27,11 @@ class ActionDispatch::IntegrationTest
   include ::ActionMailer::TestCase::ClearTestDeliveries
 end
 
+class ActionDispatch::IntegrationTest
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
 module ActionDispatch::RequestCookieMethods
   def commit_cookie_jar!(); end
 end
@@ -297,6 +302,7 @@ module ActionText::RichText::GeneratedRelationMethods
 end
 
 class ActionView::Base
+  include ::InlineSvg::ActionView::Helpers
   include ::Sprockets::Rails::Helper
   include ::Sprockets::Rails::Utils
   def assets_environment(); end
@@ -439,6 +445,7 @@ module ActionView::TestCase::TestController::HelperMethods
   include ::ActionText::ContentHelper
   include ::ActionText::TagHelper
   include ::Importmap::ImportmapTagsHelper
+  include ::Hotwire::Livereload::LivereloadTagsHelper
   include ::ApplicationHelper
 end
 
@@ -1597,6 +1604,11 @@ class ApplicationController
   include ::GeneratedUrlHelpers
 end
 
+class ApplicationController
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
 class ApplicationRecord
   include ::ApplicationRecord::GeneratedAttributeMethods
   include ::ApplicationRecord::GeneratedAssociationMethods
@@ -1660,6 +1672,11 @@ end
 
 class Array
   def self.try_convert(arg); end
+end
+
+class AuthenticateUser
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
 end
 
 class BasicObject
@@ -4491,6 +4508,11 @@ end
 module CGI::HtmlExtension
 end
 
+class CancelEmailChange
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
 module CodeRay
   CODERAY_PATH = ::T.let(nil, ::T.untyped)
   TokenKinds = ::T.let(nil, ::T.untyped)
@@ -4880,6 +4902,11 @@ end
 
 class Concurrent::SynchronizedDelegator
   RUBYGEMS_ACTIVATION_MONITOR = ::T.let(nil, ::T.untyped)
+end
+
+class ConfirmUser
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
 end
 
 module DEBUGGER__
@@ -7619,6 +7646,74 @@ end
 module GeneratedUrlHelpers
   def _routes(); end
 
+  def accept_invitation_registrations_path(*args); end
+
+  def accept_invitation_registrations_url(*args); end
+
+  def cancel_email_change_registrations_path(*args); end
+
+  def cancel_email_change_registrations_url(*args); end
+
+  def confirm_registration_registrations_path(*args); end
+
+  def confirm_registration_registrations_url(*args); end
+
+  def edit_organization_path(*args); end
+
+  def edit_organization_url(*args); end
+
+  def edit_password_path(*args); end
+
+  def edit_password_url(*args); end
+
+  def edit_profile_path(*args); end
+
+  def edit_profile_url(*args); end
+
+  def membership_path(*args); end
+
+  def membership_url(*args); end
+
+  def memberships_path(*args); end
+
+  def memberships_url(*args); end
+
+  def new_organization_path(*args); end
+
+  def new_organization_url(*args); end
+
+  def new_registration_path(*args); end
+
+  def new_registration_url(*args); end
+
+  def omniauth_callback_path(*args); end
+
+  def omniauth_callback_url(*args); end
+
+  def omniauth_failure_path(*args); end
+
+  def omniauth_failure_url(*args); end
+
+  def organization_path(*args); end
+
+  def organization_url(*args); end
+
+  def organizations_path(*args); end
+
+  def organizations_url(*args); end
+
+  def password_path(*args); end
+
+  def password_url(*args); end
+
+  def passwords_path(*args); end
+
+  def passwords_url(*args); end
+
+  def profile_path(*args); end
+
+  def profile_url(*args); end
+
   def rails_info_path(*args); end
 
   def rails_info_properties_path(*args); end
@@ -7634,6 +7729,34 @@ module GeneratedUrlHelpers
   def rails_mailers_path(*args); end
 
   def rails_mailers_url(*args); end
+
+  def registrations_path(*args); end
+
+  def registrations_url(*args); end
+
+  def reset_password_path(*args); end
+
+  def reset_password_url(*args); end
+
+  def root_path(*args); end
+
+  def root_url(*args); end
+
+  def sessions_path(*args); end
+
+  def sessions_url(*args); end
+
+  def sign_in_path(*args); end
+
+  def sign_in_url(*args); end
+
+  def sign_out_path(*args); end
+
+  def sign_out_url(*args); end
+
+  def sign_up_path(*args); end
+
+  def sign_up_url(*args); end
 end
 
 module GeneratedUrlHelpers
@@ -8142,6 +8265,11 @@ module ITypeAssert
   extend ::T::Private::Methods::SingletonMethodHooks
 end
 
+class InitiatePasswordReset
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
 class Integer
   include ::JSON::Ext::Generator::GeneratorMethods::Integer
   def multiple_of?(number); end
@@ -8155,6 +8283,11 @@ end
 
 class Integer
   def self.try_convert(arg); end
+end
+
+class InteractorResponse
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
 end
 
 class JSON::Ext::Generator::State
@@ -8230,6 +8363,64 @@ class MatchData
   def match(arg); end
 
   def match_length(arg); end
+end
+
+class Membership
+  def autosave_associated_records_for_organization(*args); end
+
+  def autosave_associated_records_for_user(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Membership::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Membership::GeneratedRelationMethods
+end
+
+class Membership::ActiveRecord_AssociationRelation
+end
+
+class Membership::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Membership::GeneratedRelationMethods
+end
+
+class Membership::ActiveRecord_Associations_CollectionProxy
+end
+
+class Membership::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Membership::GeneratedRelationMethods
+end
+
+class Membership::ActiveRecord_Relation
+end
+
+module Membership::GeneratedAssociationMethods
+  def organization_changed?(); end
+
+  def organization_previously_changed?(); end
+
+  def user_changed?(); end
+
+  def user_previously_changed?(); end
+end
+
+module Membership::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Membership::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
+class Membership
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class MembershipsController::MembershipParams
+  def self.inherited(s); end
 end
 
 class MessagePack::ExtensionValue
@@ -9389,6 +9580,58 @@ class OptionParser::ParseError
   def additional=(additional); end
 end
 
+class Organization
+  def autosave_associated_records_for_memberships(*args); end
+
+  def autosave_associated_records_for_users(*args); end
+
+  def validate_associated_records_for_memberships(*args); end
+
+  def validate_associated_records_for_users(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Organization::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Organization::GeneratedRelationMethods
+end
+
+class Organization::ActiveRecord_AssociationRelation
+end
+
+class Organization::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Organization::GeneratedRelationMethods
+end
+
+class Organization::ActiveRecord_Associations_CollectionProxy
+end
+
+class Organization::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Organization::GeneratedRelationMethods
+end
+
+class Organization::ActiveRecord_Relation
+end
+
+module Organization::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Organization::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
+class Organization
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class OrganizationsController::OrganizationParams
+  def self.inherited(s); end
+end
+
 class PP
   def self.width_for(out); end
 end
@@ -10417,6 +10660,19 @@ class Parser::Ruby24
 end
 
 class Parser::Ruby24
+end
+
+class Password
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class PasswordsController::RecoverPasswordParams
+  def self.inherited(s); end
+end
+
+class PasswordsController::ResetPasswordParams
+  def self.inherited(s); end
 end
 
 class Pathname
@@ -13759,6 +14015,7 @@ module Rails::ApplicationController::HelperMethods
   include ::ActionText::ContentHelper
   include ::ActionText::TagHelper
   include ::Importmap::ImportmapTagsHelper
+  include ::Hotwire::Livereload::LivereloadTagsHelper
   include ::ApplicationHelper
 end
 
@@ -13823,6 +14080,15 @@ end
 
 class Redis::DeprecatedPipeline
   RUBYGEMS_ACTIVATION_MONITOR = ::T.let(nil, ::T.untyped)
+end
+
+class Registration
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class RegistrationsController::ConfirmationParams
+  def self.inherited(s); end
 end
 
 module Reline
@@ -13956,6 +14222,11 @@ class Reline::Unicode::EastAsianWidth
   TYPE_N = ::T.let(nil, ::T.untyped)
   TYPE_NA = ::T.let(nil, ::T.untyped)
   TYPE_W = ::T.let(nil, ::T.untyped)
+end
+
+class ResetPassword
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
 end
 
 class Ripper
@@ -14613,6 +14884,15 @@ end
 
 ScanError = StringScanner::Error
 
+class Session
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class SessionsController::SessionParams
+  def self.inherited(s); end
+end
+
 class Set
   def ==(other); end
 
@@ -14634,6 +14914,11 @@ end
 
 module Shellany
   VERSION = ::T.let(nil, ::T.untyped)
+end
+
+class SignupUser
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
 end
 
 class SimpleDelegator
@@ -15011,12 +15296,6 @@ class String
   include ::JSON::Ext::Generator::GeneratorMethods::String
   def ends_with?(*arg); end
 
-  def exclude?(string); end
-
-  def indent(amount, indent_string=T.unsafe(nil), indent_empty_lines=T.unsafe(nil)); end
-
-  def indent!(amount, indent_string=T.unsafe(nil), indent_empty_lines=T.unsafe(nil)); end
-
   def shellescape(); end
 
   def shellsplit(); end
@@ -15316,6 +15595,117 @@ module UnicodeNormalize
 end
 
 module UnicodeNormalize
+end
+
+class UpdateUser
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class User
+  def autosave_associated_records_for_identities(*args); end
+
+  def autosave_associated_records_for_memberships(*args); end
+
+  def autosave_associated_records_for_organizations(*args); end
+
+  def password_confirmation(); end
+
+  def validate_associated_records_for_identities(*args); end
+
+  def validate_associated_records_for_memberships(*args); end
+
+  def validate_associated_records_for_organizations(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class User::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::User::GeneratedRelationMethods
+end
+
+class User::ActiveRecord_AssociationRelation
+end
+
+class User::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::User::GeneratedRelationMethods
+end
+
+class User::ActiveRecord_Associations_CollectionProxy
+end
+
+class User::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::User::GeneratedRelationMethods
+end
+
+class User::ActiveRecord_Relation
+end
+
+module User::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module User::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
+class User
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class UserIdentity
+  def autosave_associated_records_for_user(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class UserIdentity::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::UserIdentity::GeneratedRelationMethods
+end
+
+class UserIdentity::ActiveRecord_AssociationRelation
+end
+
+class UserIdentity::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::UserIdentity::GeneratedRelationMethods
+end
+
+class UserIdentity::ActiveRecord_Associations_CollectionProxy
+end
+
+class UserIdentity::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::UserIdentity::GeneratedRelationMethods
+end
+
+class UserIdentity::ActiveRecord_Relation
+end
+
+module UserIdentity::GeneratedAssociationMethods
+  def user_changed?(); end
+
+  def user_previously_changed?(); end
+end
+
+module UserIdentity::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module UserIdentity::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
+class UserMailer
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class UserParams
+  def self.inherited(s); end
 end
 
 module Warning

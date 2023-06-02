@@ -4,15 +4,12 @@
 class RegistrationsController < ApplicationController
   extend T::Sig
 
-  before_action :authenticate_user!, only: %i[show update cancel_email_change]
+  before_action :authenticate_user!, only: %i[show edit update cancel_email_change]
 
   sig { void }
   def new
     @user = User.new
   end
-
-  sig { void }
-  def show; end
 
   sig { void }
   def create
@@ -28,11 +25,17 @@ class RegistrationsController < ApplicationController
   end
 
   sig { void }
+  def show; end
+
+  sig { void }
+  def edit; end
+
+  sig { void }
   def update
     response = UpdateUser.call(user: T.must(current_user), params: user_params)
 
     if response.success?
-      redirect_to response.user
+      redirect_to profile_path
     else
       render :edit, status: :unprocessable_entity
     end

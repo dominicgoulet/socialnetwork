@@ -12,7 +12,7 @@ class PasswordsController < ApplicationController
     response = InitiatePasswordReset.call(email: reset_password_params.email)
 
     if response.success?
-      redirect_to response.user
+      redirect_to root_path
     else
       flash.now.alert = response.messages
       render :new, status: :unprocessable_entity

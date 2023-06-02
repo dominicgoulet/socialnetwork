@@ -20,6 +20,7 @@ class MembershipsController
     include ::ActionText::ContentHelper
     include ::ActionText::TagHelper
     include ::Importmap::ImportmapTagsHelper
+    include ::Hotwire::Livereload::LivereloadTagsHelper
     include ::ActionController::Base::HelperMethods
     include ::ApplicationHelper
 

@@ -7,47 +7,53 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   extend T::Sig
 
   setup do
-    @user = T.let(users(:valid), T.nilable(User))
+    @user = T.let(users(:darth_vader), User)
   end
 
-  test 'should get current session if signed_in?' do
-    sign_in!(T.must(@user))
+  #
+  # New
+  #
 
-    get sessions_url
+  test 'should show the sign in form' do
+    get sign_in_url
 
     assert_response :ok
   end
 
-  test 'should not get current session if not signed_in?' do
-    get sessions_url
+  #
+  # Create
+  #
 
-    assert_response :unauthorized
-  end
-
-  test 'should create a new session given valid params' do
-    post sessions_url, params: {
-      email: T.must(@user).email,
-      password: '0000'
-    }
-
-    assert_response :ok
-    # assert json_data[:token].present?
-  end
-
-  test 'should not create a new session given invalid params' do
-    post sessions_url, params: {
-      email: 'luke@skywalker.edu',
-      password: '1234'
-    }
+  test 'create should fail given invalid params' do
+    post sessions_url
 
     assert_response :unprocessable_entity
   end
 
-  test 'should delete current session' do
-    sign_in!(T.must(@user))
+  test 'should create a new session given valid params' do
+    post sessions_url, params: {
+      email: @user.email,
+      password: '0000'
+    }
 
-    delete sessions_url
+    assert_redirected_to root_path
+  end
 
-    assert_response :no_content
+  #
+  # Destroy
+  #
+
+  test 'should redirect to sign in if not signed in' do
+    delete sign_out_url
+
+    assert_redirected_to sign_in_path
+  end
+
+  test 'should delete current session if signed in' do
+    sign_in!(@user)
+
+    delete sign_out_url
+
+    assert_redirected_to root_path
   end
 end

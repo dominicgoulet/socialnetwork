@@ -4,6 +4,8 @@
 class UpdateUser
   extend T::Sig
 
+  class ChangeEmailError < StandardError; end
+
   class UpdateUserResponse < InteractorResponse
     extend T::Sig
 
@@ -15,11 +17,11 @@ class UpdateUser
   def self.call(user:, params:)
     response = UpdateUserResponse.new
 
+    # Maybe make that a standalone interactor?
     user.change_email!(params.email) if params.email
-    user.update(update_attributes(user, params))
 
-    if response.user
-      T.must(response.user).send_new_user_instructions!
+    if user.update(update_attributes(user, params))
+      response.user = user
       response.success!
     else
       response.fail!
@@ -40,6 +42,8 @@ class UpdateUser
 
   sig { params(user: User, params: UserParams).returns(T::Boolean) }
   def self.should_update_password?(user, params)
-    user.can_update_password?(T.must(params.current_password)) && params.password.present?
+    return false unless params.password.present?
+
+    user.can_update_password?(T.must(params.current_password))
   end
 end

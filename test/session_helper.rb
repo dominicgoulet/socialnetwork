@@ -1,14 +1,18 @@
 # typed: strict
 # frozen_string_literal: true
 
-module ActiveSupport
-  class TestCase
+module ActionDispatch
+  class IntegrationTest
     extend T::Sig
+
+    sig { returns(T.nilable(ApplicationController)) }
+    def controller
+      @controller ||= T.let(nil, T.nilable(ApplicationController))
+    end
 
     sig { params(user: User).void }
     def sign_in!(user)
       post sessions_url, params: { email: user.email, password: '0000' }
-      # session[:user_id] = user.id
     end
   end
 end

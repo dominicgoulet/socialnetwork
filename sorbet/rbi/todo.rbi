@@ -4,7 +4,6 @@
 
 # typed: false
 
-module ActionDispatch::SystemTestCase; end
 module T::InterfaceWrapper::Helpers; end
 module T::Private::Abstract::Hooks; end
 module T::Private::Methods::MethodHooks; end

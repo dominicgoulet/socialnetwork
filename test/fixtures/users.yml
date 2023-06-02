@@ -23,6 +23,10 @@
 #  updated_at             :datetime         not null
 #
 
-valid:
+darth_vader:
   email: darth.vader@theempire.org
+  password_digest: <%= BCrypt::Password.create('0000', cost: 5) %>
+
+luke_skywalker:
+  email: luke@skywalker.org
   password_digest: <%= BCrypt::Password.create('0000', cost: 5) %>

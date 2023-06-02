@@ -2596,6 +2596,7 @@ module Rails::MailersController::HelperMethods
   include ::ActionView::Helpers::OutputSafetyHelper
   include ::ActionView::Helpers::TagHelper
   include ::Turbo::Streams::ActionHelper
+  include ::Hotwire::Livereload::LivereloadTagsHelper
   include ::ActionController::Base::HelperMethods
 
   # source://railties//lib/rails/mailers_controller.rb#12

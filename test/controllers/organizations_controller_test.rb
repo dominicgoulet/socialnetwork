@@ -7,71 +7,103 @@ class OrganizationsControllerTest < ActionDispatch::IntegrationTest
   extend T::Sig
 
   setup do
-    @user = T.let(users(:valid), T.nilable(User))
-    @organization = T.let(organizations(:valid), T.nilable(Organization))
+    @user = T.let(users(:darth_vader), User)
+    @organization = T.let(organizations(:valid), Organization)
 
-    sign_in!(T.must(@user))
+    sign_in!(@user)
   end
 
-  test 'should get index' do
+  #
+  # Index
+  #
+
+  test 'list all my organizations' do
     get organizations_url
-    assert_response :success
+
+    assert_response :ok
   end
 
-  test 'should create organization given valid params' do
-    assert_difference('Organization.count') do
-      post organizations_url,
-           params: {
-             organization: {
-               name: 'The Empire'
-             }
-           }
-    end
+  #
+  # New
+  #
 
-    assert_response :created
+  test 'shows the new organization form page' do
+    get new_organization_url
+
+    assert_response :ok
   end
 
-  test 'should not create organization with invalid params' do
-    assert_difference('Organization.count', 0) do
-      post organizations_url,
-           params: {
-             organization: { name: '' }
-           }
-    end
+  #
+  # Show
+  #
+
+  test 'shows nothing given invalid params' do
+    get organization_url(0)
+
+    assert_response :not_found
+  end
+
+  test 'shows the organization given valid params' do
+    get organization_url(@organization.id)
+
+    assert_response :ok
+  end
+
+  #
+  # Create
+  #
+
+  test 'does not create a new organization given invalid params' do
+    post organizations_url, params: {}
 
     assert_response :unprocessable_entity
   end
 
-  test 'should show organization' do
-    get organization_url(@organization)
-    assert_response :success
+  test 'creates a new organization given valid params' do
+    post organizations_url, params: { organization: { name: 'The Republic' } }
+
+    assert_redirected_to organization_path(id: T.must(Organization.find_by(name: 'The Republic')).id)
   end
 
-  test 'should update organization given valid params' do
-    patch organization_url(@organization),
-          params: {
-            organization: {
-              name: 'New Republic'
-            }
-          }
-    assert_response :success
+  #
+  # Edit
+  #
+
+  test 'shows no edit form given invalid params' do
+    get edit_organization_url(0)
+
+    assert_response :not_found
   end
 
-  test 'should not update organization with invalid params' do
-    patch organization_url(@organization),
-          params: {
-            organization: {
-              name: ''
-            }
-          }
+  test 'shows the organization edit form given valid params' do
+    get edit_organization_url(@organization.id)
+
+    assert_response :ok
+  end
+
+  #
+  # Update
+  #
+
+  test 'does not update the organization given invalid params' do
+    patch organization_url(@organization.id)
+
     assert_response :unprocessable_entity
   end
 
-  test 'should destroy organization' do
-    assert_difference('Organization.count', -1) do
-      delete organization_url(@organization)
-    end
+  test 'updates the organization given valid params' do
+    patch organization_url(@organization.id), params: { organization: { name: 'The Updated Empire' } }
 
-    assert_response :no_content
+    assert_redirected_to organization_path(id: @organization.id)
+  end
+
+  #
+  # Destroy
+  #
+
+  test 'deletes the organization given valid params' do
+    delete organization_url(@organization.id), as: :turbo_stream
+
+    assert_response :ok
   end
 end

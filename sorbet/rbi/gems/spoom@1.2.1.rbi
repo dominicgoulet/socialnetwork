@@ -221,22 +221,22 @@ class Spoom::Cli::Main < ::Thor
   # source://spoom//lib/spoom/cli.rb#61
   def __print_version; end
 
-  # source://thor/1.2.1/lib/thor.rb#239
+  # source://thor/1.2.2/lib/thor.rb#239
   def bump(*args); end
 
-  # source://thor/1.2.1/lib/thor.rb#239
+  # source://thor/1.2.2/lib/thor.rb#239
   def config(*args); end
 
-  # source://thor/1.2.1/lib/thor.rb#239
+  # source://thor/1.2.2/lib/thor.rb#239
   def coverage(*args); end
 
   # source://spoom//lib/spoom/cli.rb#43
   def files; end
 
-  # source://thor/1.2.1/lib/thor.rb#239
+  # source://thor/1.2.2/lib/thor.rb#239
   def lsp(*args); end
 
-  # source://thor/1.2.1/lib/thor.rb#239
+  # source://thor/1.2.2/lib/thor.rb#239
   def tc(*args); end
 
   class << self

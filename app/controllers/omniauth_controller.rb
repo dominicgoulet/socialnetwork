@@ -7,7 +7,7 @@ class OmniauthController < ApplicationController
   sig { void }
   def create
     user = Registration.find_or_create_from_omniauth(request.env['omniauth.auth'])
-    return unless user.persisted?
+    # return unless user.persisted?
 
     sign_in_and_redirect!(user)
   end

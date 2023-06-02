@@ -17,67 +17,66 @@ require 'test_helper'
 class OrganizationTest < ActiveSupport::TestCase
   extend T::Sig
 
-  sig { void }
-  def setup
-    @organization = T.let(organizations(:valid), T.nilable(Organization))
+  setup do
+    @organization = T.let(organizations(:valid), Organization)
   end
 
   test 'valid organization' do
-    assert T.must(@organization).valid?
+    assert @organization.valid?
   end
 
   test 'invalid without a name' do
-    T.must(@organization).name = ''
+    @organization.name = ''
 
-    refute T.must(@organization).valid?
-    assert_not_nil T.must(@organization).errors[:name]
+    refute @organization.valid?
+    assert_not_nil @organization.errors[:name]
   end
 
   test '.setup_completed! sets a setup_completed_at and returns true' do
-    assert T.must(@organization).setup_completed_at.blank?
-    assert T.must(@organization).setup_completed!
-    assert T.must(@organization).setup_completed_at.present?
+    assert @organization.setup_completed_at.blank?
+    assert @organization.setup_completed!
+    assert @organization.setup_completed_at.present?
   end
 
   test '.define_owner! adds user as the owner and returns true' do
-    assert_difference('T.must(@organization).owners.size', 1) do
-      assert T.must(@organization).define_owner!(users(:valid))
+    assert_difference('@organization.owners.size', 1) do
+      assert @organization.define_owner!(users(:darth_vader))
     end
   end
 
   test '.add_member! and .remove_member! adds and removes user as a member' do
-    user = users(:valid)
-    T.must(@organization).memberships.delete_all
+    user = users(:darth_vader)
+    @organization.memberships.delete_all
 
-    assert_difference('T.must(@organization).members.size', 1) do
-      assert T.must(@organization).add_member!(user)
+    assert_difference('@organization.members.size', 1) do
+      assert @organization.add_member!(user)
     end
 
-    assert_difference('T.must(@organization).members.size', -1) do
-      assert T.must(@organization).remove_member!(user)
+    assert_difference('@organization.members.size', -1) do
+      assert @organization.remove_member!(user)
     end
   end
 
   test '.member? returns true if the user is a member, false otherwise' do
-    user = users(:valid)
-    T.must(@organization).memberships.delete_all
+    user = users(:darth_vader)
+    @organization.memberships.delete_all
 
-    refute T.must(@organization).member?(user)
-    T.must(@organization).add_member!(user)
-    assert T.must(@organization).member?(user)
+    refute @organization.member?(user)
+    @organization.add_member!(user)
+    assert @organization.member?(user)
   end
 
   test '.promote! and .demote! changes the level of the membership between member and admin' do
-    user = users(:valid)
-    T.must(@organization).add_member!(user)
-    membership = T.let(T.must(@organization).memberships.find_by(user:), T.nilable(Membership))
+    user = users(:darth_vader)
+    @organization.add_member!(user)
+    membership = @organization.memberships.find_by(user:)
 
     assert T.must(membership).level == 'member'
-    T.must(@organization).promote!(user)
+    @organization.promote!(user)
     T.must(membership).reload
     assert T.must(membership).level == 'admin'
 
-    T.must(@organization).demote!(user)
+    @organization.demote!(user)
     T.must(membership).reload
     assert T.must(membership).level == 'member'
   end

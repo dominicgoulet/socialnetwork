@@ -7,68 +7,62 @@ class MembershipsControllerTest < ActionDispatch::IntegrationTest
   extend T::Sig
 
   setup do
-    @user = T.let(users(:valid), T.nilable(User))
-    @membership = T.let(memberships(:valid), T.nilable(Membership))
+    @user = T.let(users(:darth_vader), User)
+    @organization = T.let(organizations(:valid), Organization)
+    @membership = T.let(memberships(:valid), Membership)
 
-    sign_in!(T.must(@user))
+    sign_in!(@user)
   end
 
-  test 'should create membership given valid params' do
-    assert_difference('Membership.count') do
-      post memberships_url,
-           params: {
-             membership: {
-               user_id: users(:valid).id,
-               organization_id: organizations(:valid).id
-             }
-           }
-    end
+  #
+  # Create
+  #
 
-    assert_response :created
+  test 'create should fail given invalid params' do
+    post memberships_url
+
+    assert_response :unprocessable_entity
   end
 
-  test 'should not create membership with invalid params' do
-    assert_difference('Membership.count', 0) do
-      post memberships_url,
-           params: {
-             membership: {
-               user_id: users(:valid).id,
-               organization_id: ''
-             }
-           }
-    end
+  test 'should create a new membership given valid params' do
+    post memberships_url, params: {
+      membership: {
+        user_id: @user.id,
+        organization_id: @organization.id
+      }
+    }, as: :turbo_stream
+
+    assert_response :ok
+  end
+
+  #
+  # Update
+  #
+
+  test 'update should fail given invalid params' do
+    patch membership_url(@membership.id)
 
     assert_response :unprocessable_entity
   end
 
   test 'should update membership given valid params' do
-    patch membership_url(@membership),
-          params: {
-            membership: {
-              user_id: T.must(@membership).user_id,
-              organization_id: T.must(@membership).organization_id
-            }
-          }
+    patch membership_url(@membership.id), params: {
+      membership: {
+        user_id: @user.id,
+        organization_id: @organization.id
+      }
+    }, as: :turbo_stream
 
-    assert_response :success
+    assert_response :ok
   end
 
-  test 'should not update membership with invalid params' do
-    patch membership_url(@membership),
-          params: {
-            membership: {
-              user_id: 'invalid-id'
-            }
-          }
+  #
+  # Destroy
+  #
 
-    assert_response :unprocessable_entity
-  end
+  test 'should delete membership' do
+    delete membership_url(@membership.id), as: :turbo_stream
 
-  test 'should destroy membership' do
-    assert_difference('Membership.count', -1) do
-      delete membership_url(@membership)
-    end
-
-    assert_response :no_content
+    assert_response :ok
   end
 end

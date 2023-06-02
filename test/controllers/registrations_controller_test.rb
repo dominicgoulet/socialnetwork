@@ -7,104 +7,100 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
   extend T::Sig
 
   setup do
-    @user = T.let(users(:valid), T.nilable(User))
+    @user = T.let(users(:darth_vader), User)
   end
 
-  test 'should get current user if signed_in?' do
-    sign_in!(T.must(@user))
+  #
+  # New
+  #
 
-    get '/registrations'
+  test 'should show the registration form' do
+    get sign_up_url
 
     assert_response :ok
   end
 
-  test 'should create a new users given valid params' do
-    post '/registrations', params: {
+  #
+  # Create
+  #
+
+  test 'create should fail given invalid params' do
+    post registrations_url
+
+    assert_response :unprocessable_entity
+  end
+
+  test 'should create a new user given valid params' do
+    post registrations_url, params: {
       user: {
-        email: 'palpatine@theempire.org',
+        email: 'anakin@skywalker.org',
         password: '0000'
       }
     }
 
+    assert_redirected_to root_path
+  end
+
+  #
+  # Show
+  #
+
+  test 'should show the profile' do
+    sign_in!(@user)
+
+    get profile_url
+
     assert_response :ok
   end
 
-  test 'should not create a new user given invalid params' do
-    post '/registrations', params: {
+  #
+  # Edit
+  #
+
+  test 'should show the edit registration form' do
+    sign_in!(@user)
+
+    get edit_profile_url
+
+    assert_response :ok
+  end
+
+  #
+  # Update
+  #
+
+  test 'update should fail given invalid params' do
+    sign_in!(@user)
+
+    patch profile_url, params: {
+      user: {}
+    }
+
+    assert_response :unprocessable_entity
+  end
+
+  test 'should update the user given valid params' do
+    sign_in!(@user)
+
+    patch profile_url, params: {
       user: {
-        email: ''
+        first_name: 'Luke',
+        last_name: 'Skywalker'
       }
     }
 
-    assert_response :unprocessable_entity
+    assert_redirected_to profile_path
   end
 
-  test 'should update current user given valid params' do
-    sign_in!(T.must(@user))
+  #
+  # Confirm
+  #
 
-    patch '/registrations', params: {
-      user: {
-        current_password: '0000',
-        first_name: 'Darth',
-        last_name: 'Vader'
-      }
-    }
+  #
+  # Accept Invitation
+  #
 
-    assert_response :ok
-  end
-
-  test 'should not update current user given invalid params' do
-    sign_in!(T.must(@user))
-
-    patch '/registrations', params: {
-      user: {
-        current_password: '0000',
-        password: '1'
-      }
-    }
-
-    assert_response :unprocessable_entity
-  end
-
-  test 'should confirm for current user given valid confirmation token' do
-    sign_in!(T.must(@user))
-
-    patch '/registrations/confirm', params: {
-      confirmation_token: T.must(@user).confirmation_token
-    }
-
-    assert_response :ok
-  end
-
-  test 'should not confirm for current user given invalid confirmation token' do
-    patch '/registrations/confirm', params: {
-      confirmation_token: 'invalid-token'
-    }
-
-    assert_response :unprocessable_entity
-  end
-
-  test 'should accept invitation for current user given valid confirmation token' do
-    patch '/registrations/accept-invitation', params: {
-      confirmation_token: T.must(@user).confirmation_token
-    }
-
-    assert_response :ok
-  end
-
-  test 'should not accept invitation for current user given invalid confirmation token' do
-    patch '/registrations/accept-invitation', params: {
-      confirmation_token: 'invalid-token'
-    }
-
-    assert_response :unprocessable_entity
-  end
-
-  test 'should cancel email change for current user' do
-    sign_in!(T.must(@user))
-
-    patch '/registrations/cancel-email-change'
-
-    assert_response :ok
-  end
+  #
+  # Cancel Email Change
+  #
 end

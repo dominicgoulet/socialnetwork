@@ -7,44 +7,55 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
   extend T::Sig
 
   setup do
-    @user = T.let(users(:valid), T.nilable(User))
+    @user = T.let(users(:darth_vader), User)
   end
 
-  test 'should send reset password instruction given valid params' do
-    post passwords_url, params: {
-      email: T.must(@user).email
-    }
+  #
+  # New
+  #
+
+  test 'should show the reset password form' do
+    get reset_password_url
 
     assert_response :ok
   end
 
-  test 'should not send reset password instruction given invalid params' do
+  #
+  # Create
+  #
+
+  test 'create should fail given invalid params' do
+    post passwords_url
+
+    assert_response :unprocessable_entity
+  end
+
+  test 'should create a new password reset request given valid params' do
     post passwords_url, params: {
-      email: 'stormtrooper@theempire.org'
+      email: @user.email
     }
+
+    assert_redirected_to root_path
+  end
+
+  #
+  # Update
+  #
+
+  test 'update should fail given invalid params' do
+    patch password_url
 
     assert_response :unprocessable_entity
   end
 
-  test 'should reset password given valid params' do
-    T.must(@user).send_reset_password_instructions!
+  test 'should update the password given valid params' do
+    @user.send_reset_password_instructions!
 
-    patch passwords_url, params: {
-      reset_password_token: T.must(@user).reset_password_token,
+    patch password_url, params: {
+      reset_password_token: @user.reset_password_token,
       password: '1111'
     }
 
-    assert_response :ok
-  end
-
-  test 'should not reset password given idvalid params' do
-    T.must(@user).send_reset_password_instructions!
-
-    patch passwords_url, params: {
-      reset_password_token: 'invalid-token',
-      password: '1111'
-    }
-
-    assert_response :unprocessable_entity
+    assert_redirected_to root_path
   end
 end

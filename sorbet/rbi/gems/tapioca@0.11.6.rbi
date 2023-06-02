@@ -564,7 +564,7 @@ class Tapioca::Commands::Command
   sig { abstract.void }
   def execute; end
 
-  # source://thor/1.2.1/lib/thor/base.rb#139
+  # source://thor/1.2.2/lib/thor/base.rb#139
   sig { returns(::Thor::Actions) }
   def file_writer; end
 
@@ -1241,6 +1241,12 @@ class Tapioca::Executor
       ).returns(T::Array[T.type_parameter(:T)])
   end
   def run_in_parallel(&block); end
+
+  private
+
+  # source://tapioca//lib/tapioca/executor.rb#37
+  sig { returns(::Integer) }
+  def max_processors; end
 end
 
 # source://tapioca//lib/tapioca/executor.rb#8

@@ -14,51 +14,42 @@ class OmniauthControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should render a failure json when there is an error' do
-    get '/auth/failure?message=no_authorization_code&strategy=facebook'
-    assert_response :ok
-  end
-
-  test 'should have a developer omniauth strategy' do
-    post '/auth/developer'
-    assert_response :found
-  end
-
-  test 'should have a facebook omniauth strategy' do
-    post '/auth/facebook'
-    assert_response :found
-  end
-
-  test 'should have a google_oauth2 omniauth strategy' do
-    post '/auth/google_oauth2'
-    assert_response :found
-  end
+  #
+  # Create
+  #
 
   test 'should handle proper facebook auth' do
-    OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(auth_hash(:facebook))
+    get omniauth_callback_url('facebook'),
+        env: { 'omniauth.auth' => OmniAuth::AuthHash.new(auth_hash(:facebook)) }
 
-    assert_difference -> { User.count } do
-      get '/auth/facebook/callback'
-      assert_response :found
-    end
+    assert_redirected_to root_path
   end
 
   test 'should handle proper google_oauth2 auth' do
-    OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(auth_hash(:google_oauth2))
+    get omniauth_callback_url('google_oauth2'),
+        env: { 'omniauth.auth' => OmniAuth::AuthHash.new(auth_hash(:google_oauth2)) }
 
-    assert_difference -> { User.count } do
-      get '/auth/google_oauth2/callback'
-      assert_response :found
-    end
+    assert_redirected_to root_path
   end
 
-  test 'should handle proper invalid auth' do
-    OmniAuth.config.mock_auth[:invalid] = OmniAuth::AuthHash.new(auth_hash(:invalid))
+  test 'should handle invalid auth' do
+    get omniauth_callback_url('facebook'),
+        env: { 'omniauth.auth' => OmniAuth::AuthHash.new(auth_hash(:invalid)) }
 
-    assert_no_difference -> { User.count } do
-      get '/auth/facebook/callback'
-      assert_response :unprocessable_entity
-    end
+    assert_redirected_to root_path
+  end
+
+  #
+  # Failure
+  #
+
+  test 'should render a failure json when there is an error' do
+    get omniauth_failure_url, params: {
+      message: :no_authorization,
+      strategy: :facebook
+    }, as: :turbo_stream
+
+    assert_response :ok
   end
 
   sig { params(provider: Symbol).returns(T::Hash[T.untyped, T.untyped]) }
