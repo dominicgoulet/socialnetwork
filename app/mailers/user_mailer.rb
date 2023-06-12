@@ -20,7 +20,7 @@ class UserMailer < ApplicationMailer
     @user = T.let(params[:user], T.nilable(User))
 
     mail(to: T.must(@user).email,
-         subject: 'You have been invited to join your organization on Ninetyfour!',
+         subject: 'You have been invited to join Ninetyfour!',
          date: Time.zone.now,
          template_path: 'user_mailer',
          template_name: 'invited_user')

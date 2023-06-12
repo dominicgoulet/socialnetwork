@@ -25,7 +25,12 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
   #
 
   test 'create should fail given invalid params' do
-    post registrations_url
+    post registrations_url, params: {
+      user: {
+        email: @user.email,
+        password: '0000'
+      }
+    }
 
     assert_response :unprocessable_entity
   end

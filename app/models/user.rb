@@ -33,8 +33,6 @@ class User < ApplicationRecord
 
   # Associations
   has_many :identities, class_name: 'UserIdentity'
-  has_many :memberships
-  has_many :organizations, through: :memberships
 
   # Validations
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }

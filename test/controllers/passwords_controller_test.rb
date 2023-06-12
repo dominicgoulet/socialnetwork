@@ -25,7 +25,9 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
   #
 
   test 'create should fail given invalid params' do
-    post passwords_url
+    post passwords_url, params: {
+      email: 'invalid@test.org'
+    }
 
     assert_response :unprocessable_entity
   end
@@ -43,7 +45,10 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
   #
 
   test 'update should fail given invalid params' do
-    patch password_url
+    patch password_url, params: {
+      reset_password_token: 'invalid',
+      password: '1111'
+    }
 
     assert_response :unprocessable_entity
   end

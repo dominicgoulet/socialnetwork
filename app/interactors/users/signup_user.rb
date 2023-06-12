@@ -24,7 +24,7 @@ class SignupUser
       }
     )
 
-    if response.user
+    if T.must(response.user).persisted?
       T.must(response.user).send_new_user_instructions!
       response.success!
     else

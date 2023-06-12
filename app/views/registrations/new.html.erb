@@ -40,14 +40,7 @@
           </div>
         </div>
 
-        <div class="mt-6 grid grid-cols-2 gap-3">
-          <div>
-            <%= button_to '/auth/facebook', class: 'inline-flex w-full justify-center rounded-md bg-white px-4 py-2 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0', data: { turbo: false } do %>
-              <span class="sr-only">Sign up with Facebook</span>
-              <%= inline_svg_tag 'facebook_logo.svg', class: 'h-5 w-5' %>
-            <% end %>
-          </div>
-
+        <div class="mt-6 grid grid-cols-1 gap-3">
           <div>
             <%= button_to '/auth/google_oauth2', class: 'inline-flex w-full justify-center rounded-md bg-white px-4 py-2 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0', data: { turbo: false } do %>
               <span class="sr-only">Sign up with Google</span>

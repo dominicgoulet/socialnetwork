@@ -9,7 +9,7 @@ class OmniauthControllerTest < ActionDispatch::IntegrationTest
   setup do
     OmniAuth.config.test_mode = true
 
-    %i[facebook google_oauth2].each do |provider|
+    %i[google_oauth2].each do |provider|
       OmniAuth.config.mock_auth[provider] = nil
     end
   end
@@ -17,13 +17,6 @@ class OmniauthControllerTest < ActionDispatch::IntegrationTest
   #
   # Create
   #
-
-  test 'should handle proper facebook auth' do
-    get omniauth_callback_url('facebook'),
-        env: { 'omniauth.auth' => OmniAuth::AuthHash.new(auth_hash(:facebook)) }
-
-    assert_redirected_to root_path
-  end
 
   test 'should handle proper google_oauth2 auth' do
     get omniauth_callback_url('google_oauth2'),
@@ -33,7 +26,7 @@ class OmniauthControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should handle invalid auth' do
-    get omniauth_callback_url('facebook'),
+    get omniauth_callback_url('google_oauth2'),
         env: { 'omniauth.auth' => OmniAuth::AuthHash.new(auth_hash(:invalid)) }
 
     assert_redirected_to root_path
@@ -46,7 +39,7 @@ class OmniauthControllerTest < ActionDispatch::IntegrationTest
   test 'should render a failure json when there is an error' do
     get omniauth_failure_url, params: {
       message: :no_authorization,
-      strategy: :facebook
+      strategy: :google_oauth2
     }, as: :turbo_stream
 
     assert_response :ok
@@ -56,7 +49,6 @@ class OmniauthControllerTest < ActionDispatch::IntegrationTest
   def auth_hash(provider)
     {}.merge(
       google_oauth2_auth_hash,
-      facebook_auth_hash,
       invalid_auth_hash
     )[provider]
   end
@@ -75,23 +67,10 @@ class OmniauthControllerTest < ActionDispatch::IntegrationTest
   end
 
   sig { returns(T::Hash[T.untyped, T.untyped]) }
-  def facebook_auth_hash
-    {
-      facebook: {
-        provider: 'facebook',
-        uid: '1234567',
-        info: {
-          email: 'joe@bloggs.com'
-        }
-      }
-    }
-  end
-
-  sig { returns(T::Hash[T.untyped, T.untyped]) }
   def invalid_auth_hash
     {
       invalid: {
-        provider: 'facebook',
+        provider: 'google_oauth2',
         uid: '1234567'
       }
     }

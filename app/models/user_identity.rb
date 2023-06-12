@@ -19,6 +19,6 @@ class UserIdentity < ApplicationRecord
   belongs_to :user
 
   # Validations
-  validates :provider, presence: true, inclusion: { in: %w[google_oauth2 facebook] }
+  validates :provider, presence: true, inclusion: { in: %w[google_oauth2] }
   validates :uid, presence: true
 end

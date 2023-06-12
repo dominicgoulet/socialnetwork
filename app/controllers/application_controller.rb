@@ -64,8 +64,17 @@ class ApplicationController < ActionController::Base
   def render_flash!
     respond_to do |format|
       format.turbo_stream do
-        render partial: 'partials/flash'
+        render partial: 'partials/flash', status: flash_status
       end
+    end
+  end
+
+  sig { returns(Symbol) }
+  def flash_status
+    if flash.select { |f| f[0] == 'alert' }.any?
+      :unprocessable_entity
+    else
+      :ok
     end
   end
 end

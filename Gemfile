@@ -14,7 +14,6 @@ gem 'redis', '~> 4.0'
 # Security
 gem 'bcrypt', '3.1.18'
 gem 'omniauth', '2.1.1'
-gem 'omniauth-facebook', '9.0.0'
 gem 'omniauth-google-oauth2', '1.1.1'
 
 # Frontend

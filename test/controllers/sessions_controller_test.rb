@@ -25,7 +25,10 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   #
 
   test 'create should fail given invalid params' do
-    post sessions_url
+    post sessions_url, params: {
+      email: 'invalid@test.org',
+      password: '0000'
+    }
 
     assert_response :unprocessable_entity
   end
