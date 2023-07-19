@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: audiences
+#
+#  id          :uuid             not null, primary key
+#  activity_id :uuid             not null
+#  actor_type  :string           not null
+#  actor_id    :uuid             not null
+#  privacy     :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+one:
+  activity: one
+  actor: darth_vader (Person)
+  privacy: MyString
+
+two:
+  activity: two
+  actor: darth_vader (Person)
+  privacy: MyString

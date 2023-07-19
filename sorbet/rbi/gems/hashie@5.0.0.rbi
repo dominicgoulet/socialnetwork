@@ -2309,7 +2309,7 @@ end
 # source://hashie//lib/hashie/mash.rb#68
 Hashie::Mash::ALLOWED_SUFFIXES = T.let(T.unsafe(nil), Array)
 
-# source://hashie//lib/hashie/railtie.rb#6
+# source://hashie//lib/hashie/railtie.rb#5
 class Hashie::Railtie < ::Rails::Railtie; end
 
 # Rash is a Hash whose keys can be Regexps, or Ranges, which will

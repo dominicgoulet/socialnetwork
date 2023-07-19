@@ -19,8 +19,7 @@
 #  unconfirmed_email      :string
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
-#  first_name             :string
-#  last_name              :string
+#  name                   :string
 #  setup_completed_at     :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -31,7 +30,7 @@ class UserTest < ActiveSupport::TestCase
   extend T::Sig
 
   setup do
-    @user = T.let(users(:darth_vader), User)
+    @user = T.let(users(:david_prowse), User)
   end
 
   test 'valid user' do

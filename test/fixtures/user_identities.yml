@@ -11,6 +11,6 @@
 #
 
 valid:
-  user: darth_vader
-  provider: MyString
+  user: david_prowse
+  provider: google_oauth2
   uid: MyString

@@ -1,0 +1,19 @@
+# == Schema Information
+#
+# Table name: ties
+#
+#  id         :uuid             not null, primary key
+#  circle_id  :uuid             not null
+#  actor_type :string           not null
+#  actor_id   :uuid             not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+colleagues_darth_vader_grand_moff_tarkin:
+  circle: colleagues
+  actor: grand_moff_tarkin (Person)
+
+family_darth_vader_luke_skywalker:
+  circle: family
+  actor: luke_skywaler (Person)

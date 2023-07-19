@@ -7,7 +7,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
   extend T::Sig
 
   setup do
-    @user = T.let(users(:darth_vader), User)
+    @user = T.let(users(:david_prowse), User)
   end
 
   #
@@ -89,8 +89,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
 
     patch profile_url, params: {
       user: {
-        first_name: 'Luke',
-        last_name: 'Skywalker'
+        name: 'Luke Skywalker'
       }
     }
 

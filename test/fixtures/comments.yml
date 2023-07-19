@@ -1,0 +1,19 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :uuid             not null, primary key
+#  actor_type :string           not null
+#  actor_id   :uuid             not null
+#  content    :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  actor: darth_vader (Person)
+  content: MyText
+
+two:
+  actor: darth_vader (Person)
+  content: MyText

@@ -7,12 +7,12 @@ class SessionTest < ActiveSupport::TestCase
   extend T::Sig
 
   setup do
-    @user = T.let(users(:darth_vader), User)
+    @user = T.let(users(:david_prowse), User)
   end
 
   # Class methods
   test '#authenticate_with_email_and_password returns the user when email and password are valid' do
-    refute Session.authenticate_with_email_and_password(users(:darth_vader).email, 'wrongpassword', '127.0.0.1')
-    assert Session.authenticate_with_email_and_password(users(:darth_vader).email, '0000', '127.0.0.1')
+    refute Session.authenticate_with_email_and_password(users(:david_prowse).email, 'wrongpassword', '127.0.0.1')
+    assert Session.authenticate_with_email_and_password(users(:david_prowse).email, '0000', '127.0.0.1')
   end
 end

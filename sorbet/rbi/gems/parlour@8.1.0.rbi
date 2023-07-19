@@ -374,7 +374,7 @@ end
 
 # The RBI generator.
 #
-# source://parlour//lib/parlour/rbi_generator/parameter.rb#5
+# source://parlour//lib/parlour/rbi_generator/parameter.rb#4
 class Parlour::RbiGenerator < ::Parlour::Generator
   # @return [RbiGenerator] a new instance of RbiGenerator
   #
@@ -1428,7 +1428,7 @@ end
 
 # The RBS generator.
 #
-# source://parlour//lib/parlour/rbs_generator/rbs_object.rb#8
+# source://parlour//lib/parlour/rbs_generator/rbs_object.rb#3
 class Parlour::RbsGenerator < ::Parlour::Generator
   # @return [RbsGenerator] a new instance of RbsGenerator
   #
@@ -2725,7 +2725,7 @@ end
 
 # A type which can be called as a function.
 #
-# source://parlour//lib/parlour/types.rb#505
+# source://parlour//lib/parlour/types.rb#504
 class Parlour::Types::Proc < ::Parlour::Types::Type
   # source://parlour//lib/parlour/types.rb#533
   sig do

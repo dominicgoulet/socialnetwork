@@ -209,6 +209,8 @@ end
 
 # source://sorbet-rails//lib/sorbet-rails/model_plugins/base.rb#4
 module SorbetRails::ModelPlugins
+  include ::Kernel
+
   # source://sorbet-rails//lib/sorbet-rails/model_plugins/plugins.rb#41
   sig { params(plugin_name: ::Symbol).returns(T.class_of(SorbetRails::ModelPlugins::Base)) }
   def get_plugin_by_name(plugin_name); end
@@ -522,6 +524,8 @@ class SorbetRails::Railtie < ::Rails::Railtie; end
 
 # source://sorbet-rails//lib/sorbet-rails/sorbet_utils.rb#9
 module SorbetRails::SorbetUtils
+  include ::Kernel
+
   class << self
     # source://sorbet-rails//lib/sorbet-rails/sorbet_utils.rb#129
     sig do

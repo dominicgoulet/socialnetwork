@@ -12,16 +12,82 @@ module GeneratedUrlHelpersModule
   def accept_invitation_registrations_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def activities_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def activity_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def audience_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def audiences_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def brand_setup_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def brand_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def brands_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def cancel_email_change_registrations_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def circle_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def circles_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def comment_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def comments_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def complete_setup_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def complete_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def confirm_registration_registrations_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def edit_organization_url(*args); end
+  def edit_activity_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_audience_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_brand_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_circle_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_comment_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_group_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_membership_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_note_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_notification_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def edit_password_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_person_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def edit_profile_url(*args); end
@@ -30,13 +96,49 @@ module GeneratedUrlHelpersModule
   def edit_rails_conductor_inbound_email_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_tie_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def group_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def groups_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def membership_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def memberships_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def new_organization_url(*args); end
+  def new_activity_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_audience_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_brand_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_circle_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_comment_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_group_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_membership_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_note_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_notification_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_person_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_rails_conductor_inbound_email_source_url(*args); end
@@ -48,22 +150,40 @@ module GeneratedUrlHelpersModule
   def new_registration_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def new_tie_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def note_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def notes_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def notification_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def notifications_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def omniauth_callback_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def omniauth_failure_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def organization_url(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
-  def organizations_url(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
   def password_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def passwords_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def people_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def person_setup_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def person_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def profile_url(*args); end
@@ -165,6 +285,12 @@ module GeneratedUrlHelpersModule
   def sign_up_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def tie_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def ties_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -175,4 +301,7 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def update_rails_disk_service_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def welcome_setup_url(*args); end
 end

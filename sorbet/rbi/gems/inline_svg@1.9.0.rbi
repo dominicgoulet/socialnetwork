@@ -209,7 +209,7 @@ end
 # source://inline_svg//lib/inline_svg.rb#19
 class InlineSvg::Configuration::Invalid < ::ArgumentError; end
 
-# source://inline_svg//lib/inline_svg/transform_pipeline/transformations/transformation.rb#46
+# source://inline_svg//lib/inline_svg/transform_pipeline/transformations/transformation.rb#39
 class InlineSvg::CustomTransformation < ::InlineSvg::TransformPipeline::Transformations::Transformation; end
 
 # source://inline_svg//lib/inline_svg/finds_asset_paths.rb#2

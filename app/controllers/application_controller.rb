@@ -4,9 +4,15 @@
 class ApplicationController < ActionController::Base
   extend T::Sig
 
-  sig { returns(T.nilable(User)) }
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
+  before_action :redirect_to_setup_if_not_completed
+
+  sig { void }
+  def redirect_to_setup_if_not_completed
+    return if current_user.blank?
+    return if T.must(current_user).setup_completed?
+    return if setup_controllers.include? request.controller_class
+
+    redirect_to welcome_setup_path
   end
 
   sig { void }
@@ -26,6 +32,12 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::ParameterMissing do
     render json: { error: 'Missing parameters.' }, status: :unprocessable_entity
   end
+
+  sig { returns(T.nilable(User)) }
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id])
+  end
+  helper_method :current_user
 
   sig { returns(T::Boolean) }
   def signed_in?
@@ -71,10 +83,30 @@ class ApplicationController < ActionController::Base
 
   sig { returns(Symbol) }
   def flash_status
-    if flash.select { |f| f[0] == 'alert' }.any?
+    if flash.any? { |f| f[0] == 'alert' }
       :unprocessable_entity
     else
       :ok
     end
+  end
+
+  sig { returns T::Array[T.untyped] }
+  def public_controllers
+    [
+      SessionsController,
+      RegistrationsController,
+      PasswordsController,
+      OmniauthController
+      # PagesController
+    ]
+  end
+
+  sig { returns T::Array[T.untyped] }
+  def setup_controllers
+    public_controllers + [
+      SetupController,
+      PeopleController,
+      BrandsController
+    ]
   end
 end

@@ -1152,6 +1152,8 @@ end
 
 module ActiveRecord::ConnectionAdapters::PostgreSQL::Utils
   def extract_schema_qualified_name(string); end
+
+  def unquote_identifier(identifier); end
 end
 
 module ActiveRecord::ConnectionAdapters::PostgreSQL::Utils
@@ -1590,10 +1592,60 @@ end
 
 class ActiveSupport::TestCase
   include ::ActiveSupport::Executor::TestHelper
+  include ::Turbo::TestAssertions
 end
 
 class ActiveSupport::TestCase
   extend ::Rails::LineFiltering
+end
+
+class Activity
+  def autosave_associated_records_for_actor(*args); end
+
+  def autosave_associated_records_for_object(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Activity::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Activity::GeneratedRelationMethods
+end
+
+class Activity::ActiveRecord_AssociationRelation
+end
+
+class Activity::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Activity::GeneratedRelationMethods
+end
+
+class Activity::ActiveRecord_Associations_CollectionProxy
+end
+
+class Activity::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Activity::GeneratedRelationMethods
+end
+
+class Activity::ActiveRecord_Relation
+end
+
+module Activity::GeneratedAssociationMethods
+  def actor_changed?(); end
+
+  def actor_previously_changed?(); end
+
+  def object_changed?(); end
+
+  def object_previously_changed?(); end
+end
+
+module Activity::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Activity::GeneratedRelationMethods
+  extend ::Mutex_m
 end
 
 class Addrinfo
@@ -1659,6 +1711,10 @@ module ApplicationRecord::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
+class ArgumentError
+  include ::ErrorHighlight::CoreExt
+end
+
 class Array
   include ::JSON::Ext::Generator::GeneratorMethods::Array
   def deconstruct(); end
@@ -1671,7 +1727,86 @@ class Array
 end
 
 class Array
+  def self.new(*arg); end
+
   def self.try_convert(arg); end
+end
+
+class Audience
+  def autosave_associated_records_for_activity(*args); end
+
+  def autosave_associated_records_for_actor(*args); end
+
+  def typed_privacy(); end
+
+  def typed_privacy=(value); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Audience::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Audience::GeneratedRelationMethods
+end
+
+class Audience::ActiveRecord_AssociationRelation
+end
+
+class Audience::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Audience::GeneratedRelationMethods
+end
+
+class Audience::ActiveRecord_Associations_CollectionProxy
+end
+
+class Audience::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Audience::GeneratedRelationMethods
+end
+
+class Audience::ActiveRecord_Relation
+end
+
+module Audience::GeneratedAssociationMethods
+  def activity_changed?(); end
+
+  def activity_previously_changed?(); end
+
+  def actor_changed?(); end
+
+  def actor_previously_changed?(); end
+end
+
+module Audience::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Audience::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
+class Audience::Privacy
+  Circles = ::T.let(nil, ::T.untyped)
+  Limited = ::T.let(nil, ::T.untyped)
+  Public = ::T.let(nil, ::T.untyped)
+end
+
+class Audience::Privacy
+  extend ::T::Helpers
+end
+
+class Audience
+  def self.is_circles(*args, **arg); end
+
+  def self.is_limited(*args, **arg); end
+
+  def self.is_public(*args, **arg); end
+
+  def self.not_is_circles(*args, **arg); end
+
+  def self.not_is_limited(*args, **arg); end
+
+  def self.not_is_public(*args, **arg); end
 end
 
 class AuthenticateUser
@@ -1737,6 +1872,53 @@ class Binding
   def console(); end
 
   def irb(show_code: T.unsafe(nil)); end
+end
+
+class Brand
+  def autosave_associated_records_for_user(*args); end
+
+  def autosave_associated_records_for_user_actors(*args); end
+
+  def validate_associated_records_for_user(*args); end
+
+  def validate_associated_records_for_user_actors(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Brand::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Brand::GeneratedRelationMethods
+end
+
+class Brand::ActiveRecord_AssociationRelation
+end
+
+class Brand::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Brand::GeneratedRelationMethods
+end
+
+class Brand::ActiveRecord_Associations_CollectionProxy
+end
+
+class Brand::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Brand::GeneratedRelationMethods
+end
+
+class Brand::ActiveRecord_Relation
+end
+
+module Brand::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Brand::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
+class BrandsController::BrandParams
+  def self.inherited(s); end
 end
 
 class Bundler::APIResponseInvalidDependenciesError
@@ -4459,6 +4641,18 @@ class CGI
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
+class CGI::Cookie
+  DOMAIN_VALUE_RE = ::T.let(nil, ::T.untyped)
+  PATH_VALUE_RE = ::T.let(nil, ::T.untyped)
+  TOKEN_RE = ::T.let(nil, ::T.untyped)
+end
+
+module CGI::Escape
+  def escapeURIComponent(arg); end
+
+  def unescapeURIComponent(*arg); end
+end
+
 module CGI::HtmlExtension
   def a(href=T.unsafe(nil)); end
 
@@ -4508,9 +4702,62 @@ end
 module CGI::HtmlExtension
 end
 
+module CGI::Util
+  def escapeURIComponent(arg); end
+
+  def unescapeURIComponent(*arg); end
+end
+
 class CancelEmailChange
   extend ::T::Private::Methods::MethodHooks
   extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Circle
+  def autosave_associated_records_for_actor(*args); end
+
+  def autosave_associated_records_for_ties(*args); end
+
+  def validate_associated_records_for_ties(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Circle::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Circle::GeneratedRelationMethods
+end
+
+class Circle::ActiveRecord_AssociationRelation
+end
+
+class Circle::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Circle::GeneratedRelationMethods
+end
+
+class Circle::ActiveRecord_Associations_CollectionProxy
+end
+
+class Circle::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Circle::GeneratedRelationMethods
+end
+
+class Circle::ActiveRecord_Relation
+end
+
+module Circle::GeneratedAssociationMethods
+  def actor_changed?(); end
+
+  def actor_previously_changed?(); end
+end
+
+module Circle::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Circle::GeneratedRelationMethods
+  extend ::Mutex_m
 end
 
 module CodeRay
@@ -4890,6 +5137,49 @@ module CodeRay
   def self.scan_file(filename, lang=T.unsafe(nil), options=T.unsafe(nil), &block); end
 
   def self.scanner(lang, options=T.unsafe(nil), &block); end
+end
+
+class Comment
+  def autosave_associated_records_for_actor(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Comment::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Comment::GeneratedRelationMethods
+end
+
+class Comment::ActiveRecord_AssociationRelation
+end
+
+class Comment::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Comment::GeneratedRelationMethods
+end
+
+class Comment::ActiveRecord_Associations_CollectionProxy
+end
+
+class Comment::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Comment::GeneratedRelationMethods
+end
+
+class Comment::ActiveRecord_Relation
+end
+
+module Comment::GeneratedAssociationMethods
+  def actor_changed?(); end
+
+  def actor_previously_changed?(); end
+end
+
+module Comment::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Comment::GeneratedRelationMethods
+  extend ::Mutex_m
 end
 
 class Complex
@@ -6173,11 +6463,11 @@ end
 module DidYouMean::Correctable
   def corrections(); end
 
+  def detailed_message(highlight: T.unsafe(nil), did_you_mean: T.unsafe(nil), **arg); end
+
   def original_message(); end
 
   def spell_checker(); end
-
-  def to_s(); end
 end
 
 class DidYouMean::Formatter
@@ -6323,10 +6613,6 @@ module Dir::Tmpname
   UNUSABLE_CHARS = ::T.let(nil, ::T.untyped)
 end
 
-class Dir
-  def self.exists?(arg); end
-end
-
 class ERB
   def def_method(mod, methodname, fname=T.unsafe(nil)); end
 
@@ -6338,6 +6624,10 @@ class ERB::Compiler::Scanner
   DEFAULT_STAGS = ::T.let(nil, ::T.untyped)
 end
 
+module ERB::Util
+  include ::ERB::Escape
+end
+
 class Encoding
   def _dump(*arg); end
   CESU_8 = ::T.let(nil, ::T.untyped)
@@ -6347,6 +6637,7 @@ end
 
 class Encoding::Converter
   def initialize(*arg); end
+  LF_NEWLINE_DECORATOR = ::T.let(nil, ::T.untyped)
 end
 
 class Encoding
@@ -6354,7 +6645,6 @@ class Encoding
 end
 
 module Enumerable
-  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   def compact(); end
 end
 
@@ -6392,6 +6682,17 @@ class Enumerator::Producer
 end
 
 class Enumerator::Producer
+end
+
+class Enumerator::Product
+  def each(&blk); end
+end
+
+class Enumerator::Product
+end
+
+class Enumerator
+  def self.product(*arg); end
 end
 
 class Errno::EAUTH
@@ -6539,6 +6840,10 @@ end
 class Errno::ESHLIBVERS
 end
 
+module ErrorHighlight::CoreExt
+  def detailed_message(highlight: T.unsafe(nil), error_highlight: T.unsafe(nil), **arg); end
+end
+
 module Etc
   VERSION = ::T.let(nil, ::T.untyped)
 end
@@ -6617,6 +6922,8 @@ class Exception
   def binding_locations(); end
 
   def bindings(); end
+
+  def detailed_message(*arg); end
 end
 
 class ExitCalledError
@@ -6642,10 +6949,20 @@ class Fiber
 
   def initialize(*arg); end
 
+  def storage(); end
+
+  def storage=(storage); end
+
   def transfer(*arg); end
 end
 
 class Fiber
+  def self.[](arg); end
+
+  def self.[]=(arg, arg1); end
+
+  def self.blocking(); end
+
   def self.blocking?(); end
 
   def self.current(); end
@@ -6665,6 +6982,10 @@ module Fiddle
   ALIGN_INT64_T = ::T.let(nil, ::T.untyped)
   ALIGN_INT8_T = ::T.let(nil, ::T.untyped)
   NULL = ::T.let(nil, ::T.untyped)
+  Qfalse = ::T.let(nil, ::T.untyped)
+  Qnil = ::T.let(nil, ::T.untyped)
+  Qtrue = ::T.let(nil, ::T.untyped)
+  Qundef = ::T.let(nil, ::T.untyped)
   RTLD_GLOBAL = ::T.let(nil, ::T.untyped)
   RTLD_LAZY = ::T.let(nil, ::T.untyped)
   RTLD_NOW = ::T.let(nil, ::T.untyped)
@@ -6673,11 +6994,29 @@ module Fiddle
   SIZEOF_INT32_T = ::T.let(nil, ::T.untyped)
   SIZEOF_INT64_T = ::T.let(nil, ::T.untyped)
   SIZEOF_INT8_T = ::T.let(nil, ::T.untyped)
+  SIZEOF_UCHAR = ::T.let(nil, ::T.untyped)
+  SIZEOF_UINT = ::T.let(nil, ::T.untyped)
+  SIZEOF_UINT16_T = ::T.let(nil, ::T.untyped)
+  SIZEOF_UINT32_T = ::T.let(nil, ::T.untyped)
+  SIZEOF_UINT64_T = ::T.let(nil, ::T.untyped)
+  SIZEOF_UINT8_T = ::T.let(nil, ::T.untyped)
+  SIZEOF_ULONG = ::T.let(nil, ::T.untyped)
+  SIZEOF_ULONG_LONG = ::T.let(nil, ::T.untyped)
+  SIZEOF_USHORT = ::T.let(nil, ::T.untyped)
   TYPE_CONST_STRING = ::T.let(nil, ::T.untyped)
   TYPE_INT16_T = ::T.let(nil, ::T.untyped)
   TYPE_INT32_T = ::T.let(nil, ::T.untyped)
   TYPE_INT64_T = ::T.let(nil, ::T.untyped)
   TYPE_INT8_T = ::T.let(nil, ::T.untyped)
+  TYPE_UCHAR = ::T.let(nil, ::T.untyped)
+  TYPE_UINT = ::T.let(nil, ::T.untyped)
+  TYPE_UINT16_T = ::T.let(nil, ::T.untyped)
+  TYPE_UINT32_T = ::T.let(nil, ::T.untyped)
+  TYPE_UINT64_T = ::T.let(nil, ::T.untyped)
+  TYPE_UINT8_T = ::T.let(nil, ::T.untyped)
+  TYPE_ULONG = ::T.let(nil, ::T.untyped)
+  TYPE_ULONG_LONG = ::T.let(nil, ::T.untyped)
+  TYPE_USHORT = ::T.let(nil, ::T.untyped)
   TYPE_VARIADIC = ::T.let(nil, ::T.untyped)
   VERSION = ::T.let(nil, ::T.untyped)
   WINDOWS = ::T.let(nil, ::T.untyped)
@@ -6752,6 +7091,16 @@ end
 class Fiddle::ClearedReferenceError
 end
 
+class Fiddle::Closure
+  def free(); end
+
+  def freed?(); end
+end
+
+class Fiddle::Closure
+  def self.create(*args); end
+end
+
 class Fiddle::CompositeHandler
   def [](symbol); end
 
@@ -6780,7 +7129,13 @@ end
 class Fiddle::Handle
   def file_name(); end
 
+  def sym_defined?(arg); end
+
   def to_ptr(); end
+end
+
+class Fiddle::Handle
+  def self.sym_defined?(arg); end
 end
 
 module Fiddle::Importer
@@ -6880,6 +7235,41 @@ end
 class Fiddle::StructArray
 end
 
+module Fiddle::Types
+  CHAR = ::T.let(nil, ::T.untyped)
+  CONST_STRING = ::T.let(nil, ::T.untyped)
+  DOUBLE = ::T.let(nil, ::T.untyped)
+  FLOAT = ::T.let(nil, ::T.untyped)
+  INT = ::T.let(nil, ::T.untyped)
+  INT16_T = ::T.let(nil, ::T.untyped)
+  INT32_T = ::T.let(nil, ::T.untyped)
+  INT64_T = ::T.let(nil, ::T.untyped)
+  INT8_T = ::T.let(nil, ::T.untyped)
+  INTPTR_T = ::T.let(nil, ::T.untyped)
+  LONG = ::T.let(nil, ::T.untyped)
+  LONG_LONG = ::T.let(nil, ::T.untyped)
+  PTRDIFF_T = ::T.let(nil, ::T.untyped)
+  SHORT = ::T.let(nil, ::T.untyped)
+  SIZE_T = ::T.let(nil, ::T.untyped)
+  SSIZE_T = ::T.let(nil, ::T.untyped)
+  UCHAR = ::T.let(nil, ::T.untyped)
+  UINT = ::T.let(nil, ::T.untyped)
+  UINT16_T = ::T.let(nil, ::T.untyped)
+  UINT32_T = ::T.let(nil, ::T.untyped)
+  UINT64_T = ::T.let(nil, ::T.untyped)
+  UINT8_T = ::T.let(nil, ::T.untyped)
+  UINTPTR_T = ::T.let(nil, ::T.untyped)
+  ULONG = ::T.let(nil, ::T.untyped)
+  ULONG_LONG = ::T.let(nil, ::T.untyped)
+  USHORT = ::T.let(nil, ::T.untyped)
+  VARIADIC = ::T.let(nil, ::T.untyped)
+  VOID = ::T.let(nil, ::T.untyped)
+  VOIDP = ::T.let(nil, ::T.untyped)
+end
+
+module Fiddle::Types
+end
+
 module Fiddle::ValueUtil
   def signed_value(val, ty); end
 
@@ -6895,8 +7285,6 @@ end
 
 class File
   def self.absolute_path?(arg); end
-
-  def self.exists?(arg); end
 end
 
 module FileUtils
@@ -6942,6 +7330,7 @@ end
 
 module FileUtils
   extend ::FileUtils::StreamUtils_
+  def self.ln_sr(src, dest, target_directory: T.unsafe(nil), force: T.unsafe(nil), noop: T.unsafe(nil), verbose: T.unsafe(nil)); end
 end
 
 class Float
@@ -7062,7 +7451,6 @@ end
 module Gem
   ConfigMap = ::T.let(nil, ::T.untyped)
   HAVE_OPENSSL = ::T.let(nil, ::T.untyped)
-  KERNEL_WARN_IGNORES_INTERNAL_ENTRIES = ::T.let(nil, ::T.untyped)
   RbConfigPriorities = ::T.let(nil, ::T.untyped)
   RubyGemsVersion = ::T.let(nil, ::T.untyped)
   UNTAINT = ::T.let(nil, ::T.untyped)
@@ -7072,14 +7460,18 @@ class Gem::BasicSpecification
   def plugins(); end
 end
 
-module Gem::BundlerVersionFinder
-  def self.prioritize!(specs); end
-end
-
 class Gem::ConfigFile
   def ipv4_fallback_enabled(); end
 
   def ipv4_fallback_enabled=(ipv4_fallback_enabled); end
+
+  def last_update_check(); end
+
+  def last_update_check=(timestamp); end
+
+  def state_file_name(); end
+
+  def state_file_writable?(); end
   DEFAULT_IPV4_FALLBACK_ENABLED = ::T.let(nil, ::T.untyped)
 end
 
@@ -7102,13 +7494,49 @@ module Gem::Deprecate
 
   def self.rubygems_deprecate(name, replacement=T.unsafe(nil)); end
 
-  def self.rubygems_deprecate_command(); end
+  def self.rubygems_deprecate_command(version=T.unsafe(nil)); end
 end
 
 class Gem::Ext::BuildError
 end
 
 class Gem::Ext::BuildError
+end
+
+class Gem::Ext::Builder
+  def self.ruby(); end
+end
+
+class Gem::Ext::CargoBuilder
+  def build(extension, dest_path, results, args=T.unsafe(nil), lib_dir=T.unsafe(nil), cargo_dir=T.unsafe(nil)); end
+
+  def build_env(); end
+
+  def cargo_command(cargo_toml, dest_path, args=T.unsafe(nil), crate_name=T.unsafe(nil)); end
+
+  def initialize(); end
+
+  def profile(); end
+
+  def profile=(profile); end
+
+  def runner(); end
+
+  def runner=(runner); end
+
+  def spec(); end
+
+  def spec=(spec); end
+end
+
+class Gem::Ext::CargoBuilder::DylibNotFoundError
+  def initialize(dir); end
+end
+
+class Gem::Ext::CargoBuilder::DylibNotFoundError
+end
+
+class Gem::Ext::CargoBuilder
 end
 
 class Gem::Ext::ExtConfBuilder
@@ -7185,6 +7613,10 @@ class Gem::PathSupport
   def path(); end
 
   def spec_cache_dir(); end
+end
+
+class Gem::Platform
+  def normalized_linux_version(); end
 end
 
 class Gem::Platform
@@ -7458,9 +7890,9 @@ class Gem::Specification
 
   def deleted_gem?(); end
 
-  def removed_method_calls(); end
+  def flatten_require_paths(); end
 
-  def rg_required_ruby_version=(req); end
+  def removed_method_calls(); end
 
   def to_ruby(); end
   LATEST_RUBY_WITHOUT_PATCH_VERSIONS = ::T.let(nil, ::T.untyped)
@@ -7477,7 +7909,13 @@ end
 class Gem::Specification
   extend ::Gem::Deprecate
   extend ::Enumerable
+  def self.add_spec(spec); end
+
+  def self.find_by_full_name(full_name); end
+
   def self.latest_spec_for(name); end
+
+  def self.remove_spec(spec); end
 
   def self.stubs_for_pattern(pattern, match_platform=T.unsafe(nil)); end
 end
@@ -7525,6 +7963,8 @@ class Gem::StubSpecification
   def initialize(filename, base_dir, gems_dir, default_gem); end
 
   def missing_extensions?(); end
+
+  def spec(); end
 
   def valid?(); end
 end
@@ -7617,6 +8057,13 @@ end
 
 Gem::Version::Requirement = Gem::Requirement
 
+class Gem::WebauthnVerificationError
+  def initialize(message); end
+end
+
+class Gem::WebauthnVerificationError
+end
+
 module Gem
   def self.activated_gem_paths(); end
 
@@ -7630,6 +8077,10 @@ module Gem
 
   def self.disable_system_update_message=(disable_system_update_message); end
 
+  def self.discover_gems_on_require(); end
+
+  def self.discover_gems_on_require=(discover_gems_on_require); end
+
   def self.find_config_file(); end
 
   def self.open_file(path, flags, &block); end
@@ -7641,6 +8092,10 @@ module Gem
   def self.plugindir(install_dir=T.unsafe(nil)); end
 
   def self.solaris_platform?(); end
+
+  def self.state_file(); end
+
+  def self.state_home(); end
 end
 
 module GeneratedUrlHelpers
@@ -7650,25 +8105,125 @@ module GeneratedUrlHelpers
 
   def accept_invitation_registrations_url(*args); end
 
+  def activities_path(*args); end
+
+  def activities_url(*args); end
+
+  def activity_path(*args); end
+
+  def activity_url(*args); end
+
+  def audience_path(*args); end
+
+  def audience_url(*args); end
+
+  def audiences_path(*args); end
+
+  def audiences_url(*args); end
+
+  def brand_path(*args); end
+
+  def brand_setup_path(*args); end
+
+  def brand_setup_url(*args); end
+
+  def brand_url(*args); end
+
+  def brands_path(*args); end
+
+  def brands_url(*args); end
+
   def cancel_email_change_registrations_path(*args); end
 
   def cancel_email_change_registrations_url(*args); end
+
+  def circle_path(*args); end
+
+  def circle_url(*args); end
+
+  def circles_path(*args); end
+
+  def circles_url(*args); end
+
+  def comment_path(*args); end
+
+  def comment_url(*args); end
+
+  def comments_path(*args); end
+
+  def comments_url(*args); end
+
+  def complete_path(*args); end
+
+  def complete_setup_path(*args); end
+
+  def complete_setup_url(*args); end
+
+  def complete_url(*args); end
 
   def confirm_registration_registrations_path(*args); end
 
   def confirm_registration_registrations_url(*args); end
 
-  def edit_organization_path(*args); end
+  def edit_activity_path(*args); end
 
-  def edit_organization_url(*args); end
+  def edit_activity_url(*args); end
+
+  def edit_audience_path(*args); end
+
+  def edit_audience_url(*args); end
+
+  def edit_brand_path(*args); end
+
+  def edit_brand_url(*args); end
+
+  def edit_circle_path(*args); end
+
+  def edit_circle_url(*args); end
+
+  def edit_comment_path(*args); end
+
+  def edit_comment_url(*args); end
+
+  def edit_group_path(*args); end
+
+  def edit_group_url(*args); end
+
+  def edit_membership_path(*args); end
+
+  def edit_membership_url(*args); end
+
+  def edit_note_path(*args); end
+
+  def edit_note_url(*args); end
+
+  def edit_notification_path(*args); end
+
+  def edit_notification_url(*args); end
 
   def edit_password_path(*args); end
 
   def edit_password_url(*args); end
 
+  def edit_person_path(*args); end
+
+  def edit_person_url(*args); end
+
   def edit_profile_path(*args); end
 
   def edit_profile_url(*args); end
+
+  def edit_tie_path(*args); end
+
+  def edit_tie_url(*args); end
+
+  def group_path(*args); end
+
+  def group_url(*args); end
+
+  def groups_path(*args); end
+
+  def groups_url(*args); end
 
   def membership_path(*args); end
 
@@ -7678,13 +8233,69 @@ module GeneratedUrlHelpers
 
   def memberships_url(*args); end
 
-  def new_organization_path(*args); end
+  def new_activity_path(*args); end
 
-  def new_organization_url(*args); end
+  def new_activity_url(*args); end
+
+  def new_audience_path(*args); end
+
+  def new_audience_url(*args); end
+
+  def new_brand_path(*args); end
+
+  def new_brand_url(*args); end
+
+  def new_circle_path(*args); end
+
+  def new_circle_url(*args); end
+
+  def new_comment_path(*args); end
+
+  def new_comment_url(*args); end
+
+  def new_group_path(*args); end
+
+  def new_group_url(*args); end
+
+  def new_membership_path(*args); end
+
+  def new_membership_url(*args); end
+
+  def new_note_path(*args); end
+
+  def new_note_url(*args); end
+
+  def new_notification_path(*args); end
+
+  def new_notification_url(*args); end
+
+  def new_person_path(*args); end
+
+  def new_person_url(*args); end
 
   def new_registration_path(*args); end
 
   def new_registration_url(*args); end
+
+  def new_tie_path(*args); end
+
+  def new_tie_url(*args); end
+
+  def note_path(*args); end
+
+  def note_url(*args); end
+
+  def notes_path(*args); end
+
+  def notes_url(*args); end
+
+  def notification_path(*args); end
+
+  def notification_url(*args); end
+
+  def notifications_path(*args); end
+
+  def notifications_url(*args); end
 
   def omniauth_callback_path(*args); end
 
@@ -7694,14 +8305,6 @@ module GeneratedUrlHelpers
 
   def omniauth_failure_url(*args); end
 
-  def organization_path(*args); end
-
-  def organization_url(*args); end
-
-  def organizations_path(*args); end
-
-  def organizations_url(*args); end
-
   def password_path(*args); end
 
   def password_url(*args); end
@@ -7709,6 +8312,18 @@ module GeneratedUrlHelpers
   def passwords_path(*args); end
 
   def passwords_url(*args); end
+
+  def people_path(*args); end
+
+  def people_url(*args); end
+
+  def person_path(*args); end
+
+  def person_setup_path(*args); end
+
+  def person_setup_url(*args); end
+
+  def person_url(*args); end
 
   def profile_path(*args); end
 
@@ -7757,6 +8372,18 @@ module GeneratedUrlHelpers
   def sign_up_path(*args); end
 
   def sign_up_url(*args); end
+
+  def tie_path(*args); end
+
+  def tie_url(*args); end
+
+  def ties_path(*args); end
+
+  def ties_url(*args); end
+
+  def welcome_setup_path(*args); end
+
+  def welcome_setup_url(*args); end
 end
 
 module GeneratedUrlHelpers
@@ -7785,6 +8412,59 @@ module GlobalID::FixtureSet
 end
 
 module GlobalID::FixtureSet
+end
+
+class Group
+  def autosave_associated_records_for_actors(*args); end
+
+  def autosave_associated_records_for_memberships(*args); end
+
+  def validate_associated_records_for_actors(*args); end
+
+  def validate_associated_records_for_memberships(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Group::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Group::GeneratedRelationMethods
+end
+
+class Group::ActiveRecord_AssociationRelation
+end
+
+class Group::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Group::GeneratedRelationMethods
+end
+
+class Group::ActiveRecord_Associations_CollectionProxy
+end
+
+class Group::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Group::GeneratedRelationMethods
+end
+
+class Group::ActiveRecord_Relation
+end
+
+module Group::GeneratedAssociationMethods
+  def actor_ids(); end
+
+  def actor_ids=(ids); end
+
+  def actors(); end
+
+  def actors=(value); end
+end
+
+module Group::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Group::GeneratedRelationMethods
+  extend ::Mutex_m
 end
 
 class Hash
@@ -7880,6 +8560,8 @@ class IO
 
   def oflush(); end
 
+  def path(); end
+
   def pathconf(arg); end
 
   def pressed?(); end
@@ -7893,6 +8575,12 @@ class IO
   def scroll_backward(arg); end
 
   def scroll_forward(arg); end
+
+  def timeout(); end
+
+  def timeout=(timeout); end
+
+  def to_path(); end
 
   def wait(*arg); end
 
@@ -7932,7 +8620,6 @@ end
 
 module IRB
   IRBRC_EXT = ::T.let(nil, ::T.untyped)
-  MagicFile = ::T.let(nil, ::T.untyped)
   STDIN_FILE_NAME = ::T.let(nil, ::T.untyped)
   TOPLEVEL_BINDING = ::T.let(nil, ::T.untyped)
   VERSION = ::T.let(nil, ::T.untyped)
@@ -7990,11 +8677,15 @@ class IRB::Context
 
   def echo_on_assignment?(); end
 
-  def evaluate(line, line_no, exception: T.unsafe(nil)); end
+  def evaluate(line, line_no); end
 
   def extra_doc_dirs(); end
 
   def extra_doc_dirs=(extra_doc_dirs); end
+
+  def history_file(); end
+
+  def history_file=(hist); end
 
   def initialize(irb, workspace=T.unsafe(nil), input_method=T.unsafe(nil)); end
 
@@ -8005,6 +8696,8 @@ class IRB::Context
   def newline_before_multiline_output=(newline_before_multiline_output); end
 
   def newline_before_multiline_output?(); end
+
+  def save_history(); end
 
   def symbol_alias?(command); end
 
@@ -8077,6 +8770,8 @@ module IRB::ExtendCommandBundle
 
   def irb_show_cmds(*opts, **kwargs, &b); end
 
+  def irb_show_doc(*opts, **kwargs, &b); end
+
   def irb_show_source(*opts, **kwargs, &b); end
 
   def irb_source(*opts, **kwargs, &b); end
@@ -8108,6 +8803,16 @@ class IRB::FileInputMethod
   def self.open(file, &block); end
 end
 
+module IRB::HistorySavingAbility
+  def load_history(); end
+
+  def save_history(); end
+end
+
+module IRB::HistorySavingAbility
+  def self.extended(obj); end
+end
+
 module IRB::InputCompletor
   BASIC_WORD_BREAK_CHARACTERS = ::T.let(nil, ::T.untyped)
   CompletionProc = ::T.let(nil, ::T.untyped)
@@ -8133,6 +8838,8 @@ end
 class IRB::InputMethod
   def initialize(file=T.unsafe(nil)); end
 
+  def support_history_saving?(); end
+
   def winsize(); end
 end
 
@@ -8149,6 +8856,8 @@ class IRB::Irb
   def debug_break(); end
 
   def encode_with_invalid_byte_sequence(str, enc); end
+
+  def evaluate_line(line, line_no); end
 
   def handle_exception(exc); end
 
@@ -8168,6 +8877,10 @@ end
 class IRB::Locale
   def String(mes); end
 
+  def each_localized_path(dir, file); end
+
+  def each_sublocale(); end
+
   def encoding(); end
 
   def find(file, paths=T.unsafe(nil)); end
@@ -8180,7 +8893,7 @@ class IRB::Locale
 
   def lang(); end
 
-  def load(file, priv=T.unsafe(nil)); end
+  def load(file); end
 
   def modifier(); end
 
@@ -8192,14 +8905,27 @@ class IRB::Locale
 
   def readline(*rs); end
 
-  def require(file, priv=T.unsafe(nil)); end
+  def search_file(lib_paths, dir, file); end
 
   def territory(); end
+  LEGACY_ENCODING_ALIAS_MAP = ::T.let(nil, ::T.untyped)
   LOCALE_DIR = ::T.let(nil, ::T.untyped)
   LOCALE_NAME_RE = ::T.let(nil, ::T.untyped)
 end
 
 class IRB::Locale
+end
+
+module IRB::NestingParser
+  IGNORE_TOKENS = ::T.let(nil, ::T.untyped)
+end
+
+module IRB::NestingParser
+  def self.open_tokens(tokens); end
+
+  def self.parse_by_line(tokens); end
+
+  def self.scan_opens(tokens); end
 end
 
 class IRB::ReadlineInputMethod
@@ -8218,6 +8944,7 @@ class IRB::RelineInputMethod
   def dynamic_prompt(&block); end
 
   def initialize(); end
+  HISTORY = ::T.let(nil, ::T.untyped)
   SHOW_DOC_DIALOG = ::T.let(nil, ::T.untyped)
 end
 
@@ -8272,6 +8999,8 @@ end
 
 class Integer
   include ::JSON::Ext::Generator::GeneratorMethods::Integer
+  def ceildiv(other); end
+
   def multiple_of?(number); end
 
   def ordinal(); end
@@ -8318,6 +9047,8 @@ end
 module Kernel
   def self.at_exit(); end
 
+  def self.exit(*arg); end
+
   def self.trap(*arg); end
 end
 
@@ -8360,15 +9091,19 @@ class Mail::PartsList
 end
 
 class MatchData
+  def deconstruct(); end
+
+  def deconstruct_keys(arg); end
+
   def match(arg); end
 
   def match_length(arg); end
 end
 
 class Membership
-  def autosave_associated_records_for_organization(*args); end
+  def autosave_associated_records_for_actor(*args); end
 
-  def autosave_associated_records_for_user(*args); end
+  def autosave_associated_records_for_group(*args); end
   RelationType = ::T.let(nil, ::T.untyped)
 end
 
@@ -8397,13 +9132,13 @@ class Membership::ActiveRecord_Relation
 end
 
 module Membership::GeneratedAssociationMethods
-  def organization_changed?(); end
+  def actor_changed?(); end
 
-  def organization_previously_changed?(); end
+  def actor_previously_changed?(); end
 
-  def user_changed?(); end
+  def group_changed?(); end
 
-  def user_previously_changed?(); end
+  def group_previously_changed?(); end
 end
 
 module Membership::GeneratedAttributeMethods
@@ -8414,20 +9149,13 @@ module Membership::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
-class Membership
-  extend ::T::Private::Methods::MethodHooks
-  extend ::T::Private::Methods::SingletonMethodHooks
-end
-
-class MembershipsController::MembershipParams
-  def self.inherited(s); end
-end
-
 class MessagePack::ExtensionValue
   def self.keyword_init?(); end
 end
 
 class MessagePack::Packer
+  def register_type_internal(arg, arg1, arg2); end
+
   def reset(); end
 
   def write_bin(arg); end
@@ -8439,14 +9167,6 @@ class MessagePack::Unpacker
   def feed_reference(arg); end
 
   def freeze?(); end
-end
-
-class Method
-  def private?(); end
-
-  def protected?(); end
-
-  def public?(); end
 end
 
 MiniTest = Minitest
@@ -8651,6 +9371,8 @@ end
 
 class Module
   def infect_an_assertion(meth, new_name, dont_flip=T.unsafe(nil)); end
+
+  def undefined_instance_methods(); end
 end
 
 class Monitor
@@ -8700,6 +9422,10 @@ class Net::HTTP
 
   def extra_chain_cert=(extra_chain_cert); end
 
+  def ignore_eof(); end
+
+  def ignore_eof=(ignore_eof); end
+
   def ipaddr(); end
 
   def ipaddr=(addr); end
@@ -8716,6 +9442,10 @@ class Net::HTTP
 
   def min_version=(min_version); end
 
+  def response_body_encoding(); end
+
+  def response_body_encoding=(value); end
+
   def verify_hostname(); end
 
   def verify_hostname=(verify_hostname); end
@@ -8723,7 +9453,6 @@ class Net::HTTP
   def write_timeout(); end
 
   def write_timeout=(sec); end
-  ENVIRONMENT_VARIABLE_IS_MULTIUSER_SAFE = ::T.let(nil, ::T.untyped)
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
@@ -8733,8 +9462,6 @@ end
 
 class Net::HTTPAlreadyReported
 end
-
-Net::HTTPClientError::EXCEPTION_TYPE = Net::HTTPServerException
 
 Net::HTTPClientErrorCode = Net::HTTPClientError
 
@@ -8807,11 +9534,23 @@ Net::HTTPRequestURITooLarge = Net::HTTPURITooLong
 
 Net::HTTPResponceReceiver = Net::HTTPResponse
 
+class Net::HTTPResponse
+  def body_encoding(); end
+
+  def body_encoding=(value); end
+
+  def ignore_eof(); end
+
+  def ignore_eof=(ignore_eof); end
+end
+
+class Net::HTTPResponse::Inflater
+  def bytes_inflated(); end
+end
+
 Net::HTTPResponseReceiver = Net::HTTPResponse
 
 Net::HTTPRetriableCode = Net::HTTPRedirection
-
-Net::HTTPServerError::EXCEPTION_TYPE = Net::HTTPFatalError
 
 Net::HTTPServerErrorCode = Net::HTTPServerError
 
@@ -8849,6 +9588,8 @@ Net::NetPrivate::HTTPRequest = Net::HTTPRequest
 
 class NilClass
   include ::JSON::Ext::Generator::GeneratorMethods::NilClass
+  def =~(arg); end
+
   def to_d(); end
 end
 
@@ -8862,8 +9603,100 @@ end
 class NoMatchingPatternKeyError
 end
 
+class Note
+  def autosave_associated_records_for_actor(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Note::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Note::GeneratedRelationMethods
+end
+
+class Note::ActiveRecord_AssociationRelation
+end
+
+class Note::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Note::GeneratedRelationMethods
+end
+
+class Note::ActiveRecord_Associations_CollectionProxy
+end
+
+class Note::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Note::GeneratedRelationMethods
+end
+
+class Note::ActiveRecord_Relation
+end
+
+module Note::GeneratedAssociationMethods
+  def actor_changed?(); end
+
+  def actor_previously_changed?(); end
+end
+
+module Note::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Note::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 module Notiffany
   VERSION = ::T.let(nil, ::T.untyped)
+end
+
+class Notification
+  def autosave_associated_records_for_activity(*args); end
+
+  def autosave_associated_records_for_actor(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Notification::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Notification::GeneratedRelationMethods
+end
+
+class Notification::ActiveRecord_AssociationRelation
+end
+
+class Notification::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Notification::GeneratedRelationMethods
+end
+
+class Notification::ActiveRecord_Associations_CollectionProxy
+end
+
+class Notification::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Notification::GeneratedRelationMethods
+end
+
+class Notification::ActiveRecord_Relation
+end
+
+module Notification::GeneratedAssociationMethods
+  def activity_changed?(); end
+
+  def activity_previously_changed?(); end
+
+  def actor_changed?(); end
+
+  def actor_previously_changed?(); end
+end
+
+module Notification::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Notification::GeneratedRelationMethods
+  extend ::Mutex_m
 end
 
 class Object
@@ -8932,7 +9765,9 @@ module ObjectSpace
 
   def self.dump(obj, output: T.unsafe(nil)); end
 
-  def self.dump_all(output: T.unsafe(nil), full: T.unsafe(nil), since: T.unsafe(nil)); end
+  def self.dump_all(output: T.unsafe(nil), full: T.unsafe(nil), since: T.unsafe(nil), shapes: T.unsafe(nil)); end
+
+  def self.dump_shapes(output: T.unsafe(nil), since: T.unsafe(nil)); end
 
   def self.each_iseq(); end
 
@@ -8980,6 +9815,8 @@ class OpenSSL::BN
   def abs(); end
 
   def get_flags(arg); end
+
+  def mod_sqrt(arg); end
 
   def negative?(); end
 
@@ -9143,6 +9980,8 @@ end
 
 class OpenSSL::SSL::SSLSocket
   def alpn_protocol(); end
+
+  def export_keying_material(*arg); end
 
   def finished_message(); end
 
@@ -9469,7 +10308,7 @@ class OpenStruct
 
   def define_singleton_method!(*arg); end
 
-  def delete_field!(name); end
+  def delete_field!(name, &block); end
 
   def dig!(name, *names); end
 
@@ -9539,8 +10378,6 @@ class OpenStruct
 
   def singleton_methods!(*arg); end
 
-  def taint!(); end
-
   def tap!(); end
 
   def then!(); end
@@ -9551,18 +10388,16 @@ class OpenStruct
 
   def to_s!(); end
 
-  def trust!(); end
-
-  def untaint!(); end
-
-  def untrust!(); end
-
   def yield_self!(); end
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
 class OptionParser
   def additional_message(typ, opt); end
+
+  def raise_unknown(); end
+
+  def raise_unknown=(raise_unknown); end
 
   def require_exact(); end
 
@@ -9580,56 +10415,24 @@ class OptionParser::ParseError
   def additional=(additional); end
 end
 
-class Organization
-  def autosave_associated_records_for_memberships(*args); end
-
-  def autosave_associated_records_for_users(*args); end
-
-  def validate_associated_records_for_memberships(*args); end
-
-  def validate_associated_records_for_users(*args); end
-  RelationType = ::T.let(nil, ::T.untyped)
+class OptionParser::Switch
+  def pretty_print_contents(q); end
 end
 
-class Organization::ActiveRecord_AssociationRelation
-  include ::ActiveRecord::Delegation::ClassSpecificRelation
-  include ::Organization::GeneratedRelationMethods
+class OptionParser::Switch::NoArgument
+  def pretty_head(); end
 end
 
-class Organization::ActiveRecord_AssociationRelation
+class OptionParser::Switch::OptionalArgument
+  def pretty_head(); end
 end
 
-class Organization::ActiveRecord_Associations_CollectionProxy
-  include ::ActiveRecord::Delegation::ClassSpecificRelation
-  include ::Organization::GeneratedRelationMethods
+class OptionParser::Switch::PlacedArgument
+  def pretty_head(); end
 end
 
-class Organization::ActiveRecord_Associations_CollectionProxy
-end
-
-class Organization::ActiveRecord_Relation
-  include ::ActiveRecord::Delegation::ClassSpecificRelation
-  include ::Organization::GeneratedRelationMethods
-end
-
-class Organization::ActiveRecord_Relation
-end
-
-module Organization::GeneratedAttributeMethods
-  extend ::Mutex_m
-end
-
-module Organization::GeneratedRelationMethods
-  extend ::Mutex_m
-end
-
-class Organization
-  extend ::T::Private::Methods::MethodHooks
-  extend ::T::Private::Methods::SingletonMethodHooks
-end
-
-class OrganizationsController::OrganizationParams
-  def self.inherited(s); end
+class OptionParser::Switch::RequiredArgument
+  def pretty_head(); end
 end
 
 class PP
@@ -10677,6 +11480,55 @@ end
 
 class Pathname
   def existence(); end
+
+  def lutime(arg, arg1); end
+end
+
+class PeopleController::PersonParams
+  def self.inherited(s); end
+end
+
+class Person
+  def autosave_associated_records_for_user(*args); end
+
+  def autosave_associated_records_for_user_actors(*args); end
+
+  def validate_associated_records_for_user(*args); end
+
+  def validate_associated_records_for_user_actors(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Person::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Person::GeneratedRelationMethods
+end
+
+class Person::ActiveRecord_AssociationRelation
+end
+
+class Person::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Person::GeneratedRelationMethods
+end
+
+class Person::ActiveRecord_Associations_CollectionProxy
+end
+
+class Person::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Person::GeneratedRelationMethods
+end
+
+class Person::ActiveRecord_Relation
+end
+
+module Person::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Person::GeneratedRelationMethods
+  extend ::Mutex_m
 end
 
 module Polyfill::Module::MezpIYXNoPT5bIiNzbGljZSJdfQ__
@@ -10704,6 +11556,7 @@ end
 module Process
   extend ::DEBUGGER__::ForkInterceptor
   extend ::DEBUGGER__::ForkInterceptor::DaemonInterceptor
+  def self.exit(*arg); end
 end
 
 class Pry
@@ -13886,6 +14739,25 @@ module Psych
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
+class Psych::AliasesNotEnabled
+  def initialize(); end
+end
+
+class Psych::AliasesNotEnabled
+end
+
+class Psych::AnchorNotDefined
+  def initialize(anchor_name); end
+end
+
+class Psych::AnchorNotDefined
+end
+
+class Psych::ScalarScanner
+  INTEGER_LEGACY = ::T.let(nil, ::T.untyped)
+  INTEGER_STRICT = ::T.let(nil, ::T.untyped)
+end
+
 class Psych::Visitors::RestrictedYAMLTree
   def visit_Symbol(sym); end
   DEFAULT_PERMITTED_CLASSES = ::T.let(nil, ::T.untyped)
@@ -13927,7 +14799,7 @@ module Psych
 
   def self.safe_load_file(filename, **kwargs); end
 
-  def self.unsafe_load(yaml, filename: T.unsafe(nil), fallback: T.unsafe(nil), symbolize_names: T.unsafe(nil), freeze: T.unsafe(nil)); end
+  def self.unsafe_load(yaml, filename: T.unsafe(nil), fallback: T.unsafe(nil), symbolize_names: T.unsafe(nil), freeze: T.unsafe(nil), strict_integer: T.unsafe(nil)); end
 
   def self.unsafe_load_file(filename, **kwargs); end
 end
@@ -14082,6 +14954,14 @@ class Redis::DeprecatedPipeline
   RUBYGEMS_ACTIVATION_MONITOR = ::T.let(nil, ::T.untyped)
 end
 
+class Regexp
+  def timeout(); end
+end
+
+class Regexp
+  def self.linear_time?(*arg); end
+end
+
 class Registration
   extend ::T::Private::Methods::MethodHooks
   extend ::T::Private::Methods::SingletonMethodHooks
@@ -14117,6 +14997,7 @@ class Reline::Config
 end
 
 class Reline::Core
+  def io_gate(); end
   ATTR_READER_NAMES = ::T.let(nil, ::T.untyped)
 end
 
@@ -14148,7 +15029,31 @@ end
 
 Reline::IOGate = Reline::ANSI
 
-Reline::Key = Struct::Key
+class Reline::Key
+  def ==(other); end
+
+  def char(); end
+
+  def char=(_); end
+
+  def combined_char(); end
+
+  def combined_char=(_); end
+
+  def match?(other); end
+
+  def with_meta(); end
+
+  def with_meta=(_); end
+end
+
+class Reline::Key
+  def self.[](*arg); end
+
+  def self.keyword_init?(); end
+
+  def self.members(); end
+end
 
 class Reline::KeyActor::Base
   MAPPING = ::T.let(nil, ::T.untyped)
@@ -14166,6 +15071,12 @@ class Reline::KeyActor::ViInsert
   MAPPING = ::T.let(nil, ::T.untyped)
 end
 
+class Reline::KeyStroke
+  CSI_INTERMEDIATE_BYTES_RANGE = ::T.let(nil, ::T.untyped)
+  CSI_PARAMETER_BYTES_RANGE = ::T.let(nil, ::T.untyped)
+  ESC_BYTE = ::T.let(nil, ::T.untyped)
+end
+
 module Reline::KillRing::State
   CONTINUED = ::T.let(nil, ::T.untyped)
   FRESH = ::T.let(nil, ::T.untyped)
@@ -14174,13 +15085,38 @@ module Reline::KillRing::State
 end
 
 class Reline::LineEditor
+  def io_gate(); end
   DIALOG_DEFAULT_HEIGHT = ::T.let(nil, ::T.untyped)
   MINIMUM_SCROLLBAR_HEIGHT = ::T.let(nil, ::T.untyped)
   PROMPT_LIST_CACHE_TIMEOUT = ::T.let(nil, ::T.untyped)
   VI_MOTIONS = ::T.let(nil, ::T.untyped)
 end
 
-Reline::LineEditor::CompletionJourneyData = Struct::CompletionJourneyData
+class Reline::LineEditor::CompletionJourneyData
+  def list(); end
+
+  def list=(_); end
+
+  def pointer(); end
+
+  def pointer=(_); end
+
+  def postposing(); end
+
+  def postposing=(_); end
+
+  def preposing(); end
+
+  def preposing=(_); end
+end
+
+class Reline::LineEditor::CompletionJourneyData
+  def self.[](*arg); end
+
+  def self.keyword_init?(); end
+
+  def self.members(); end
+end
 
 module Reline::LineEditor::CompletionState
   COMPLETION = ::T.let(nil, ::T.untyped)
@@ -14191,7 +15127,29 @@ module Reline::LineEditor::CompletionState
   PERFECT_MATCH = ::T.let(nil, ::T.untyped)
 end
 
-Reline::LineEditor::MenuInfo = Struct::MenuInfo
+class Reline::LineEditor::DialogProcScope
+  def preferred_dialog_height(); end
+
+  def screen_height(); end
+end
+
+class Reline::LineEditor::MenuInfo
+  def list(); end
+
+  def list=(_); end
+
+  def target(); end
+
+  def target=(_); end
+end
+
+class Reline::LineEditor::MenuInfo
+  def self.[](*arg); end
+
+  def self.keyword_init?(); end
+
+  def self.members(); end
+end
 
 module Reline::Terminfo
   extend ::Fiddle
@@ -14200,18 +15158,13 @@ end
 
 class Reline::Unicode
   CSI_REGEXP = ::T.let(nil, ::T.untyped)
-  CSI_REGEXP_INDEX = ::T.let(nil, ::T.untyped)
   EscapedChars = ::T.let(nil, ::T.untyped)
   EscapedPairs = ::T.let(nil, ::T.untyped)
-  GRAPHEME_CLUSTER_INDEX = ::T.let(nil, ::T.untyped)
   HalfwidthDakutenHandakuten = ::T.let(nil, ::T.untyped)
   MBCharWidthRE = ::T.let(nil, ::T.untyped)
   NON_PRINTING_END = ::T.let(nil, ::T.untyped)
-  NON_PRINTING_END_INDEX = ::T.let(nil, ::T.untyped)
   NON_PRINTING_START = ::T.let(nil, ::T.untyped)
-  NON_PRINTING_START_INDEX = ::T.let(nil, ::T.untyped)
   OSC_REGEXP = ::T.let(nil, ::T.untyped)
-  OSC_REGEXP_INDEX = ::T.let(nil, ::T.untyped)
   WIDTH_SCANNER = ::T.let(nil, ::T.untyped)
 end
 
@@ -14224,9 +15177,82 @@ class Reline::Unicode::EastAsianWidth
   TYPE_W = ::T.let(nil, ::T.untyped)
 end
 
+module Reline
+  def self.update_iogate(); end
+end
+
 class ResetPassword
   extend ::T::Private::Methods::MethodHooks
   extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Resolv::DNS
+  def extract_resources(msg, name, typeclass); end
+  RequestID = ::T.let(nil, ::T.untyped)
+  RequestIDMutex = ::T.let(nil, ::T.untyped)
+end
+
+class Resolv::DNS::Config
+  def initialize(config_info=T.unsafe(nil)); end
+end
+
+class Resolv::DNS::Label::Str
+  def initialize(string); end
+end
+
+class Resolv::DNS::Message
+  def initialize(id=T.unsafe(nil)); end
+end
+
+class Resolv::DNS::Message::MessageDecoder
+  def initialize(data); end
+end
+
+class Resolv::DNS::Requester::ConnectedUDP
+  def initialize(host, port=T.unsafe(nil)); end
+
+  def lazy_initialize(); end
+end
+
+class Resolv::DNS::Requester::Sender
+  def initialize(msg, data, sock); end
+end
+
+class Resolv::DNS::Requester::TCP
+  def initialize(host, port=T.unsafe(nil)); end
+end
+
+class Resolv::DNS::Requester::UnconnectedUDP
+  def initialize(*nameserver_port); end
+
+  def lazy_initialize(); end
+end
+
+class Resolv::DNS::Requester::UnconnectedUDP::Sender
+  def initialize(msg, data, sock, host, port); end
+end
+
+class Resolv::DNS::Resource
+  ClassValue = ::T.let(nil, ::T.untyped)
+end
+
+class Resolv::DNS::Resource::LOC
+  def initialize(version, ssize, hprecision, vprecision, latitude, longitude, altitude); end
+end
+
+class Resolv::DNS
+  def self.allocate_request_id(host, port); end
+
+  def self.bind_random_port(udpsock, bind_host=T.unsafe(nil)); end
+
+  def self.free_request_id(host, port, id); end
+
+  def self.random(arg); end
+end
+
+class Resolv::IPv6
+  Regex_8HexLinkLocal = ::T.let(nil, ::T.untyped)
+  Regex_CompressedHexLinkLocal = ::T.let(nil, ::T.untyped)
 end
 
 class Ripper
@@ -14780,48 +15806,46 @@ class Ripper
 end
 
 class RubyLex
-  def check_code_block(code, tokens); end
+  def calc_indent_level(opens); end
 
-  def check_corresponding_token_depth(lines, line_index); end
+  def check_code_state(code); end
 
-  def check_newline_depth_difference(); end
-
-  def check_state(code, tokens); end
-
-  def check_string_literal(tokens); end
+  def check_code_syntax(code); end
 
   def check_termination_in_prev_line(code); end
 
+  def code_terminated?(code, tokens, opens); end
+
+  def configure_io(io); end
+
   def each_top_level_statement(); end
 
-  def find_prev_spaces(line_index); end
+  def free_indent_token?(token); end
+
+  def indent_difference(lines, line_results, line_index); end
 
   def initialize(context); end
 
-  def initialize_input(); end
+  def ltype_from_open_tokens(opens); end
 
-  def is_method_calling?(tokens, index); end
+  def process_indent_level(tokens, lines, line_index, is_newline); end
 
-  def is_the_in_correspond_to_a_for(tokens, index); end
+  def prompt(opens, continue, line_num_offset); end
 
-  def lex(); end
+  def readmultiline(); end
 
-  def process_continue(tokens); end
+  def save_prompt_to_context_io(opens, continue, line_num_offset); end
 
-  def process_literal_type(tokens); end
-
-  def process_nesting_level(tokens); end
-
-  def prompt(); end
-
-  def set_auto_indent(); end
-
-  def set_input(io, &block); end
+  def set_input(&block); end
 
   def set_prompt(&block); end
 
-  def take_corresponding_syntax_to_kw_do(tokens, index); end
+  def should_continue?(tokens); end
+
+  def single_line_command?(code); end
   ERROR_TOKENS = ::T.let(nil, ::T.untyped)
+  FREE_INDENT_TOKENS = ::T.let(nil, ::T.untyped)
+  LTYPE_TOKENS = ::T.let(nil, ::T.untyped)
 end
 
 class RubyLex::TerminateLineInput
@@ -14836,10 +15860,14 @@ class RubyLex
 
   def self.generate_local_variables_assign_code(local_variables); end
 
+  def self.interpolate_ripper_ignored_tokens(code, tokens); end
+
   def self.ripper_lex_without_warning(code, context: T.unsafe(nil)); end
 end
 
 class RubyVM::AbstractSyntaxTree::Node
+  def all_tokens(); end
+
   def node_id(); end
 
   def pretty_print_children(q, names=T.unsafe(nil)); end
@@ -14847,6 +15875,12 @@ class RubyVM::AbstractSyntaxTree::Node
   def script_lines(); end
 
   def source(); end
+
+  def tokens(); end
+end
+
+module RubyVM::AbstractSyntaxTree
+  def self.node_id_for_backtrace_location(backtrace_location); end
 end
 
 class RubyVM::InstructionSequence
@@ -14871,7 +15905,7 @@ end
 module RubyVM::MJIT
   def self.enabled?(); end
 
-  def self.pause(*arg); end
+  def self.pause(wait: T.unsafe(nil)); end
 
   def self.resume(); end
 end
@@ -14914,6 +15948,14 @@ end
 
 module Shellany
   VERSION = ::T.let(nil, ::T.untyped)
+end
+
+class Shoulda::Matchers::ActiveRecord::AssociationMatchers::ModelReflection
+  RUBYGEMS_ACTIVATION_MONITOR = ::T.let(nil, ::T.untyped)
+end
+
+class Shoulda::Matchers::ActiveRecord::HaveDbColumnMatcher::DecoratedColumn
+  RUBYGEMS_ACTIVATION_MONITOR = ::T.let(nil, ::T.untyped)
 end
 
 class SignupUser
@@ -15066,6 +16108,8 @@ class Socket
   SO_USELOOPBACK = ::T.let(nil, ::T.untyped)
   SO_WANTMORE = ::T.let(nil, ::T.untyped)
   SO_WANTOOBFLAG = ::T.let(nil, ::T.untyped)
+  TCP_CONNECTION_INFO = ::T.let(nil, ::T.untyped)
+  TCP_KEEPALIVE = ::T.let(nil, ::T.untyped)
   TCP_NOOPT = ::T.let(nil, ::T.untyped)
   TCP_NOPUSH = ::T.let(nil, ::T.untyped)
 end
@@ -15162,6 +16206,8 @@ module Socket::Constants
   SO_USELOOPBACK = ::T.let(nil, ::T.untyped)
   SO_WANTMORE = ::T.let(nil, ::T.untyped)
   SO_WANTOOBFLAG = ::T.let(nil, ::T.untyped)
+  TCP_CONNECTION_INFO = ::T.let(nil, ::T.untyped)
+  TCP_KEEPALIVE = ::T.let(nil, ::T.untyped)
   TCP_NOOPT = ::T.let(nil, ::T.untyped)
   TCP_NOPUSH = ::T.let(nil, ::T.untyped)
 end
@@ -15219,7 +16265,6 @@ module SorbetRails::ModelColumnUtils
 end
 
 module SorbetRails::ModelPlugins
-  include ::Kernel
   include ::DEBUGGER__::TrapInterceptor
 end
 
@@ -15256,7 +16301,6 @@ module SorbetRails::PluckToTStruct
 end
 
 module SorbetRails::SorbetUtils
-  include ::Kernel
   include ::DEBUGGER__::TrapInterceptor
 end
 
@@ -15294,6 +16338,8 @@ end
 
 class String
   include ::JSON::Ext::Generator::GeneratorMethods::String
+  def dedup(); end
+
   def ends_with?(*arg); end
 
   def shellescape(); end
@@ -15318,6 +16364,8 @@ class StringScanner
   def fixed_anchor?(); end
 
   def initialize(*arg); end
+
+  def named_captures(); end
   Id = ::T.let(nil, ::T.untyped)
   Version = ::T.let(nil, ::T.untyped)
 end
@@ -15329,8 +16377,6 @@ class Struct
 
   def filter(*arg); end
 end
-
-Struct::Group = Etc::Group
 
 class Struct::HTMLElementDescription
   def attrs_depr(); end
@@ -15398,8 +16444,6 @@ class Struct::HTMLElementDescription
   def self.members(); end
 end
 
-Struct::Passwd = Etc::Passwd
-
 class Struct
   def self.new(*arg); end
 end
@@ -15410,6 +16454,30 @@ class Symbol
   def starts_with?(*arg); end
 
   def to_msgpack_ext(); end
+end
+
+class SyntaxError
+  def path(); end
+end
+
+module SyntaxSuggest
+end
+
+class SyntaxSuggest::MiniStringIO
+  def initialize(isatty: T.unsafe(nil)); end
+
+  def isatty(); end
+
+  def puts(value=T.unsafe(nil), **arg); end
+
+  def string(); end
+end
+
+class SyntaxSuggest::MiniStringIO
+end
+
+module SyntaxSuggest
+  def self.module_for_detailed_message(); end
 end
 
 class TA
@@ -15445,6 +16513,8 @@ class Thread::Backtrace
 end
 
 class Thread
+  def self.each_caller_location(); end
+
   def self.ignore_deadlock(); end
 
   def self.ignore_deadlock=(ignore_deadlock); end
@@ -15452,8 +16522,59 @@ class Thread
   def self.new(*arg); end
 end
 
+class Tie
+  def autosave_associated_records_for_actor(*args); end
+
+  def autosave_associated_records_for_circle(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Tie::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Tie::GeneratedRelationMethods
+end
+
+class Tie::ActiveRecord_AssociationRelation
+end
+
+class Tie::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Tie::GeneratedRelationMethods
+end
+
+class Tie::ActiveRecord_Associations_CollectionProxy
+end
+
+class Tie::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Tie::GeneratedRelationMethods
+end
+
+class Tie::ActiveRecord_Relation
+end
+
+module Tie::GeneratedAssociationMethods
+  def actor_changed?(); end
+
+  def actor_previously_changed?(); end
+
+  def circle_changed?(); end
+
+  def circle_previously_changed?(); end
+end
+
+module Tie::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Tie::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Time
   def compare_without_coercion(arg); end
+
+  def deconstruct_keys(arg); end
 
   def eql_without_coercion(arg); end
 
@@ -15492,8 +16613,13 @@ module TypeCoerce::Configuration
   extend ::T::Private::Methods::SingletonMethodHooks
 end
 
+class TypeError
+  include ::ErrorHighlight::CoreExt
+end
+
 module URI
   include ::URI::RFC2396_REGEXP
+  TBLENCURICOMP_ = ::T.let(nil, ::T.untyped)
 end
 
 class URI::FTP
@@ -15510,6 +16636,12 @@ class URI::File
   def set_userinfo(v); end
   COMPONENT = ::T.let(nil, ::T.untyped)
   DEFAULT_PORT = ::T.let(nil, ::T.untyped)
+end
+
+class URI::Generic
+  def decoded_password(); end
+
+  def decoded_user(); end
 end
 
 class URI::HTTP
@@ -15575,20 +16707,23 @@ module URI::Util
   def self.make_components_hash(klass, array_hash); end
 end
 
+class URI::WSS
+  DEFAULT_PORT = ::T.let(nil, ::T.untyped)
+end
+
+class URI::WSS
+end
+
 module URI
+  def self.decode_uri_component(str, enc=T.unsafe(nil)); end
+
+  def self.encode_uri_component(str, enc=T.unsafe(nil)); end
+
   def self.for(scheme, *arguments, default: T.unsafe(nil)); end
 
   def self.get_encoding(label); end
 
   def self.register_scheme(scheme, klass); end
-end
-
-class UnboundMethod
-  def private?(); end
-
-  def protected?(); end
-
-  def public?(); end
 end
 
 module UnicodeNormalize
@@ -15603,19 +16738,23 @@ class UpdateUser
 end
 
 class User
+  def autosave_associated_records_for_brands(*args); end
+
   def autosave_associated_records_for_identities(*args); end
 
-  def autosave_associated_records_for_memberships(*args); end
+  def autosave_associated_records_for_people(*args); end
 
-  def autosave_associated_records_for_organizations(*args); end
+  def autosave_associated_records_for_user_actors(*args); end
 
   def password_confirmation(); end
 
+  def validate_associated_records_for_brands(*args); end
+
   def validate_associated_records_for_identities(*args); end
 
-  def validate_associated_records_for_memberships(*args); end
+  def validate_associated_records_for_people(*args); end
 
-  def validate_associated_records_for_organizations(*args); end
+  def validate_associated_records_for_user_actors(*args); end
   RelationType = ::T.let(nil, ::T.untyped)
 end
 
@@ -15654,6 +16793,55 @@ end
 class User
   extend ::T::Private::Methods::MethodHooks
   extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class UserActor
+  def autosave_associated_records_for_actor(*args); end
+
+  def autosave_associated_records_for_user(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class UserActor::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::UserActor::GeneratedRelationMethods
+end
+
+class UserActor::ActiveRecord_AssociationRelation
+end
+
+class UserActor::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::UserActor::GeneratedRelationMethods
+end
+
+class UserActor::ActiveRecord_Associations_CollectionProxy
+end
+
+class UserActor::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::UserActor::GeneratedRelationMethods
+end
+
+class UserActor::ActiveRecord_Relation
+end
+
+module UserActor::GeneratedAssociationMethods
+  def actor_changed?(); end
+
+  def actor_previously_changed?(); end
+
+  def user_changed?(); end
+
+  def user_previously_changed?(); end
+end
+
+module UserActor::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module UserActor::GeneratedRelationMethods
+  extend ::Mutex_m
 end
 
 class UserIdentity

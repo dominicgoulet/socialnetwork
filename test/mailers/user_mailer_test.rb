@@ -8,7 +8,7 @@ class UserMailerTest < ActiveSupport::TestCase
 
   sig { void }
   def setup
-    @user = T.let(users(:darth_vader), T.nilable(User))
+    @user = T.let(users(:david_prowse), T.nilable(User))
   end
 
   test '.new_user sent email' do

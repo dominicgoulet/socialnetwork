@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: notifications
+#
+#  id          :uuid             not null, primary key
+#  actor_type  :string           not null
+#  actor_id    :uuid             not null
+#  activity_id :uuid             not null
+#  read_at     :datetime
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+one:
+  actor: darth_vader (Person)
+  activity: one
+  read_at: 2023-07-07 10:43:17
+
+two:
+  actor: darth_vader (Person)
+  activity: two
+  read_at: 2023-07-07 10:43:17

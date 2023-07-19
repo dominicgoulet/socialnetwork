@@ -7,7 +7,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
   extend T::Sig
 
   setup do
-    @user = T.let(users(:darth_vader), User)
+    @user = T.let(users(:david_prowse), User)
   end
 
   #

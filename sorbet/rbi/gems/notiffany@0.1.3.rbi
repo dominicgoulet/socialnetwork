@@ -319,7 +319,7 @@ end
 # Send a notification to Emacs with emacsclient
 # (http://www.emacswiki.org/emacs/EmacsClient).
 #
-# source://notiffany//lib/notiffany/notifier/emacs/client.rb#5
+# source://notiffany//lib/notiffany/notifier/emacs/client.rb#4
 class Notiffany::Notifier::Emacs < ::Notiffany::Notifier::Base
   private
 
@@ -661,7 +661,7 @@ class Notiffany::Notifier::NotServer < ::RuntimeError; end
 #   gem 'rb-notifu'
 #   end
 #
-# source://notiffany//lib/notiffany/notifier/rb_notifu.rb#17
+# source://notiffany//lib/notiffany/notifier/rb_notifu.rb#16
 class Notiffany::Notifier::Notifu < ::Notiffany::Notifier::Base
   private
 
@@ -712,7 +712,7 @@ Notiffany::Notifier::Notifu::DEFAULTS = T.let(T.unsafe(nil), Hash)
 # @example Add the `:notifysend` notifier to your `Guardfile`
 #   notification :notifysend
 #
-# source://notiffany//lib/notiffany/notifier/notifysend.rb#14
+# source://notiffany//lib/notiffany/notifier/notifysend.rb#13
 class Notiffany::Notifier::NotifySend < ::Notiffany::Notifier::Base
   private
 
@@ -856,7 +856,7 @@ Notiffany::Notifier::TerminalTitle::DEFAULTS = T.let(T.unsafe(nil), Hash)
 # Changes the color of the Tmux status bar and optionally
 # shows messages in the status bar.
 #
-# source://notiffany//lib/notiffany/notifier/tmux/client.rb#6
+# source://notiffany//lib/notiffany/notifier/tmux/client.rb#5
 class Notiffany::Notifier::Tmux < ::Notiffany::Notifier::Base
   # Notification stopping. Restore the previous Tmux state
   # if available (existing options are restored, new options

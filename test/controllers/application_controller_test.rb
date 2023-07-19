@@ -12,7 +12,7 @@ class ApplicationControllerTest < ActionController::TestCase
   #
 
   # setup do
-  #   @user = T.let(users(:darth_vader), T.nilable(User))
+  #   @user = T.let(users(:david_prowse), T.nilable(User))
   #   @organization = T.let(organizations(:valid), T.nilable(Organization))
   # end
 

@@ -937,13 +937,13 @@ class Guard::Interactor
   # source://guard//lib/guard/interactor.rb#9
   def initialize(no_interaction = T.unsafe(nil)); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def background(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def foreground(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def handle_interrupt(*args, **_arg1, &block); end
 
   # @return [Boolean]
@@ -1337,7 +1337,7 @@ Guard::Notifier::DEPRECATED_IMPLICIT_CONNECT = T.let(T.unsafe(nil), String)
 
 # A class that holds options. Can be instantiated with default options.
 #
-# source://guard//lib/guard/options.rb#12
+# source://guard//lib/guard/options.rb#6
 class Guard::Options < ::Thor::CoreExt::HashWithIndifferentAccess
   # Initializes an Guard::Options object. `default_opts` is merged into
   # `opts`.

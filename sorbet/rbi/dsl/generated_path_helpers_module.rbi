@@ -12,16 +12,82 @@ module GeneratedPathHelpersModule
   def accept_invitation_registrations_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def activities_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def activity_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def audience_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def audiences_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def brand_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def brand_setup_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def brands_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def cancel_email_change_registrations_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def circle_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def circles_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def comment_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def comments_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def complete_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def complete_setup_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def confirm_registration_registrations_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def edit_organization_path(*args); end
+  def edit_activity_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_audience_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_brand_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_circle_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_comment_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_group_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_membership_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_note_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_notification_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def edit_password_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_person_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def edit_profile_path(*args); end
@@ -30,13 +96,49 @@ module GeneratedPathHelpersModule
   def edit_rails_conductor_inbound_email_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_tie_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def group_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def groups_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def membership_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def memberships_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def new_organization_path(*args); end
+  def new_activity_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_audience_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_brand_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_circle_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_comment_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_group_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_membership_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_note_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_notification_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_person_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_rails_conductor_inbound_email_path(*args); end
@@ -48,22 +150,40 @@ module GeneratedPathHelpersModule
   def new_registration_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def new_tie_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def note_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def notes_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def notification_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def notifications_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def omniauth_callback_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def omniauth_failure_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def organization_path(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
-  def organizations_path(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
   def password_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def passwords_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def people_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def person_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def person_setup_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def profile_path(*args); end
@@ -165,6 +285,12 @@ module GeneratedPathHelpersModule
   def sign_up_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def tie_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def ties_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -175,4 +301,7 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def update_rails_disk_service_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def welcome_setup_path(*args); end
 end

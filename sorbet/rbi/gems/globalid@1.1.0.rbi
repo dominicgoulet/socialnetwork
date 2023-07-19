@@ -369,7 +369,7 @@ end
 # source://globalid//lib/global_id/signed_global_id.rb#5
 class SignedGlobalID::ExpiredMessage < ::StandardError; end
 
-# source://globalid//lib/global_id/uri/gid.rb#27
+# source://globalid//lib/global_id/uri/gid.rb#7
 class URI::GID < ::URI::Generic
   # URI::GID encodes an app unique reference to a specific model as an URI.
   # It has the components: app name, model class name, model id and params.
@@ -392,7 +392,7 @@ class URI::GID < ::URI::Generic
   #
   # Read the documentation for +parse+, +create+ and +build+ for more.
   #
-  # source://uri/0.11.0/uri/generic.rb#243
+  # source://uri/0.12.1/uri/generic.rb#243
   def app; end
 
   # source://globalid//lib/global_id/uri/gid.rb#101

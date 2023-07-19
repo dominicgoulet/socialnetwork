@@ -7,7 +7,7 @@ class PasswordTest < ActiveSupport::TestCase
   extend T::Sig
 
   setup do
-    @user = T.let(users(:darth_vader), User)
+    @user = T.let(users(:david_prowse), User)
   end
 
   # Class methods
@@ -15,7 +15,7 @@ class PasswordTest < ActiveSupport::TestCase
     assert @user.send_reset_password_instructions!
 
     refute Password.reset_password_with_token!('invalidtoken', '1111')
-    refute Password.reset_password_with_token!(users(:darth_vader).reset_password_token, '1')
-    assert Password.reset_password_with_token!(users(:darth_vader).reset_password_token, '1111')
+    refute Password.reset_password_with_token!(users(:david_prowse).reset_password_token, '1')
+    assert Password.reset_password_with_token!(users(:david_prowse).reset_password_token, '1111')
   end
 end

@@ -24,6 +24,9 @@ class RegistrationsController
     include ::ActionController::Base::HelperMethods
     include ::ApplicationHelper
 
+    sig { returns(T.nilable(::User)) }
+    def current_user; end
+
     sig { returns(T::Boolean) }
     def signed_in?; end
   end

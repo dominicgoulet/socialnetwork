@@ -19,8 +19,7 @@
 #  unconfirmed_email      :string
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
-#  first_name             :string
-#  last_name              :string
+#  name                   :string
 #  setup_completed_at     :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -33,6 +32,9 @@ class User < ApplicationRecord
 
   # Associations
   has_many :identities, class_name: 'UserIdentity'
+  has_many :user_actors
+  has_many :brands, through: :user_actors, source: :actor, source_type: 'Brand', class_name: 'Brand'
+  has_many :people, through: :user_actors, source: :actor, source_type: 'People', class_name: 'Person'
 
   # Validations
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -68,6 +70,16 @@ class User < ApplicationRecord
   sig { returns(T::Boolean) }
   def confirmed?
     confirmed_at.present? && unconfirmed_email.blank?
+  end
+
+  sig { returns(T::Boolean) }
+  def setup_completed?
+    setup_completed_at.present?
+  end
+
+  sig { returns(T::Boolean) }
+  def complete_setup!
+    update(setup_completed_at: Time.zone.now)
   end
 
   sig { returns(T::Boolean) }

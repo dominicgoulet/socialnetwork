@@ -33,8 +33,7 @@ class UpdateUser
   sig { params(user: User, params: UserParams).returns(T::Hash[Symbol, String]) }
   def self.update_attributes(user, params)
     {
-      first_name: params.first_name,
-      last_name: params.last_name
+      name: params.name
     }.merge(
       should_update_password?(user, params) ? { password: params.password } : {}
     )

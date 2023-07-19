@@ -29,6 +29,24 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :organizations, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  resources :memberships, only: [:create, :update, :destroy]
+  # Setup
+  scope '/setup' do
+    get 'welcome', to: 'setup#welcome', as: :welcome_setup
+    get 'person', to: 'setup#person', as: :person_setup
+    get 'brand', to: 'setup#brand', as: :brand_setup
+    get 'complete', to: 'setup#complete', as: :complete_setup
+    patch 'complete', to: 'setup#complete'
+  end
+
+  resources :activities
+  resources :audiences
+  resources :brands
+  resources :circles
+  resources :comments
+  resources :groups
+  resources :memberships
+  resources :notes
+  resources :notifications
+  resources :people
+  resources :ties
 end

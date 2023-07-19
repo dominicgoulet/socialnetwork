@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: user_actors
+#
+#  id         :uuid             not null, primary key
+#  user_id    :uuid             not null
+#  actor_type :string           not null
+#  actor_id   :uuid             not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+david_prowse_darth_vader:
+  user: david_prowse
+  actor: darth_vader (Person)
+
+david_prowse_the_empire:
+  user: david_prowse
+  actor: the_empire (Brand)
+
+peter_cushing_grand_moff_tarkin:
+  user: peter_cushing
+  actor: grand_moff_tarkin (Person)
+
+peter_cushing_the_empire:
+  user: peter_cushing
+  actor: the_empire (Brand)
+
+mark_hamill_luke_skywalker:
+  user: mark_hamill
+  actor: luke_skywalker (Person)
+
+mark_hamill_the_rebels:
+  user: mark_hamill
+  actor: the_rebels (Brand)

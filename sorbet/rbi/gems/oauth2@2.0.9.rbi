@@ -719,7 +719,7 @@ module OAuth2::Strategy; end
 #
 # @see https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-10#section-4.1.3
 #
-# source://oauth2//lib/oauth2/strategy/assertion.rb#35
+# source://oauth2//lib/oauth2/strategy/assertion.rb#32
 class OAuth2::Strategy::Assertion < ::OAuth2::Strategy::Base
   # Not used for this strategy
   #
@@ -783,7 +783,7 @@ end
 #
 # @see http://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-15#section-4.1
 #
-# source://oauth2//lib/oauth2/strategy/auth_code.rb#11
+# source://oauth2//lib/oauth2/strategy/auth_code.rb#8
 class OAuth2::Strategy::AuthCode < ::OAuth2::Strategy::Base
   # The required query parameters for the authorize URL
   #
@@ -829,7 +829,7 @@ end
 #
 # @see http://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-15#section-4.4
 #
-# source://oauth2//lib/oauth2/strategy/client_credentials.rb#11
+# source://oauth2//lib/oauth2/strategy/client_credentials.rb#8
 class OAuth2::Strategy::ClientCredentials < ::OAuth2::Strategy::Base
   # Not used for this strategy
   #
@@ -851,7 +851,7 @@ end
 #
 # @see http://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-26#section-4.2
 #
-# source://oauth2//lib/oauth2/strategy/implicit.rb#11
+# source://oauth2//lib/oauth2/strategy/implicit.rb#8
 class OAuth2::Strategy::Implicit < ::OAuth2::Strategy::Base
   # The required query parameters for the authorize URL
   #
@@ -886,7 +886,7 @@ end
 #
 # @see http://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-15#section-4.3
 #
-# source://oauth2//lib/oauth2/strategy/password.rb#11
+# source://oauth2//lib/oauth2/strategy/password.rb#8
 class OAuth2::Strategy::Password < ::OAuth2::Strategy::Base
   # Not used for this strategy
   #

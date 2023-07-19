@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: brands
+#
+#  id           :uuid             not null, primary key
+#  display_name :string
+#  slug         :string
+#  website      :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+the_empire:
+  display_name: The Empire
+  slug: the-empire
+  website: https://www.the-empire.com
+
+the_rebels:
+  display_name: The Rebels
+  slug: the-rebels
+  website: http://www.the-rebels.org

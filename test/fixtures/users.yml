@@ -16,17 +16,23 @@
 #  unconfirmed_email      :string
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
-#  first_name             :string
-#  last_name              :string
+#  name                   :string
 #  setup_completed_at     :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
 
-darth_vader:
-  email: darth.vader@theempire.org
+david_prowse:
+  email: david.prowse@starwars.com
   password_digest: <%= BCrypt::Password.create('0000', cost: 5) %>
+  setup_completed_at: Time.zone.now
 
-luke_skywalker:
-  email: luke@skywalker.org
+peter_cushing:
+  email: peter.cushing@starwars.com
   password_digest: <%= BCrypt::Password.create('0000', cost: 5) %>
+  setup_completed_at: Time.zone.now
+
+mark_hamill:
+  email: mark.hamill@starwars.com
+  password_digest: <%= BCrypt::Password.create('0000', cost: 5) %>
+  setup_completed_at: Time.zone.now

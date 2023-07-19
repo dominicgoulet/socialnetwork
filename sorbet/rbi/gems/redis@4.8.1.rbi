@@ -660,7 +660,7 @@ end
 # Raised when client connected to redis as cluster mode
 # and failed to fetch cluster state information by commands.
 #
-# source://redis//lib/redis/errors.rb#51
+# source://redis//lib/redis/errors.rb#50
 class Redis::Cluster::InitialSetupError < ::Redis::BaseError
   # @param errors [Array<Redis::BaseError>]
   # @return [InitialSetupError] a new instance of InitialSetupError

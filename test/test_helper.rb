@@ -22,6 +22,18 @@ module ActiveSupport
   class TestCase
     extend T::Sig
     include DatabaseCleanerSupport
+    extend Shoulda::Matchers::ActiveModel
+    extend Shoulda::Matchers::ActiveRecord
+
+    fixtures :all
+  end
+end
+
+module ActionController
+  class TestCase
+    extend T::Sig
+    include DatabaseCleanerSupport
+    extend Shoulda::Matchers::ActionController
 
     fixtures :all
   end
@@ -31,7 +43,15 @@ module ActionDispatch
   class IntegrationTest
     extend T::Sig
     include DatabaseCleanerSupport
+    extend Shoulda::Matchers::ActionController
 
     fixtures :all
+  end
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :minitest
+    with.library :rails
   end
 end

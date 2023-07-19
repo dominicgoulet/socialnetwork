@@ -17,7 +17,11 @@ require 'test_helper'
 class UserIdentityTest < ActiveSupport::TestCase
   extend T::Sig
 
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @user_identity = T.let(user_identities(:valid), UserIdentity)
+  end
+
+  test 'valid user identity' do
+    assert @user_identity.valid?
+  end
 end

@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: people
+#
+#  id           :uuid             not null, primary key
+#  display_name :string
+#  slug         :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+darth_vader:
+  display_name: Darth Vader
+  slug: darth-vader
+
+luke_skywalker:
+  display_name: Luke Skywalker
+  slug: luke-skywalker
+
+grand_moff_tarking:
+  display_name: Grand Moff Tarkin
+  slug: grand-moff-tarkin

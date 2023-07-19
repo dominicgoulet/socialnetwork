@@ -12,7 +12,7 @@ class RegistrationTest < ActiveSupport::TestCase
   end
 
   test '#find_or_create_with_random_password returns the found user if email is found' do
-    assert Registration.find_or_create_with_random_password(users(:darth_vader).email) == users(:darth_vader)
+    assert Registration.find_or_create_with_random_password(users(:david_prowse).email) == users(:david_prowse)
   end
 
   test '#find_or_create_with_random_password returns a new valid User instance when email is not found' do

@@ -266,7 +266,7 @@ class Puma::Client
   # source://puma//lib/puma/client.rb#186
   def close; end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def closed?(*args, **_arg1, &block); end
 
   # source://puma//lib/puma/client.rb#273
@@ -473,7 +473,7 @@ Puma::Client::TE_ERR_MSG = T.let(T.unsafe(nil), String)
 # via the `spawn_workers` method call. Each worker will have it's own
 # instance of a `Puma::Server`.
 #
-# source://puma//lib/puma/cluster/worker_handle.rb#5
+# source://puma//lib/puma/cluster/worker_handle.rb#4
 class Puma::Cluster < ::Puma::Runner
   # @return [Cluster] a new instance of Cluster
   #
@@ -3638,13 +3638,13 @@ class Puma::Server
   # source://puma//lib/puma/server.rb#73
   def initialize(app, events = T.unsafe(nil), options = T.unsafe(nil)); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def add_ssl_listener(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def add_tcp_listener(*args, **_arg1, &block); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def add_unix_listener(*args, **_arg1, &block); end
 
   # Returns the value of attribute app.
@@ -3692,7 +3692,7 @@ class Puma::Server
   # source://puma//lib/puma/server.rb#192
   def closed_socket?(socket); end
 
-  # source://forwardable/1.3.2/forwardable.rb#229
+  # source://forwardable/1.3.3/forwardable.rb#231
   def connected_ports(*args, **_arg1, &block); end
 
   # 6 == Socket::IPPROTO_TCP
@@ -3915,7 +3915,7 @@ Puma::Server::ThreadLocalKey = T.let(T.unsafe(nil), Symbol)
 # gets created via the `start_server` method from the `Puma::Runner` class
 # that this inherits from.
 #
-# source://puma//lib/puma/single.rb#16
+# source://puma//lib/puma/single.rb#15
 class Puma::Single < ::Puma::Runner
   # source://puma//lib/puma/single.rb#31
   def halt; end

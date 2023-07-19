@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: groups
+#
+#  id           :uuid             not null, primary key
+#  display_name :string
+#  privacy      :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+board_of_directors:
+  display_name: The Empire Board of Directors
+  privacy: private
+
+supporter_of_the_rebels:
+  display_name: Supporter of The Rebels
+  privacy: public

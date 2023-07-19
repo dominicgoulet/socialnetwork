@@ -440,7 +440,7 @@ end
 #     }.new
 #   })
 #
-# source://rack-protection//lib/rack/protection/encrypted_cookie.rb#65
+# source://rack-protection//lib/rack/protection/encrypted_cookie.rb#64
 class Rack::Protection::EncryptedCookie < ::Rack::Session::Abstract::Persisted
   # @return [EncryptedCookie] a new instance of EncryptedCookie
   #
@@ -613,6 +613,9 @@ class Rack::Protection::EscapedParams < ::Rack::Protection::Base
   def handle(hash); end
 
   class << self
+    # source://rack/2.2.7/lib/rack/utils.rb#184
+    def escape_html(string); end
+
     private
 
     # source://rack/2.2.7/lib/rack/utils.rb#38

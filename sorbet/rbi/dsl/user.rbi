@@ -234,6 +234,20 @@ class User
   end
 
   module GeneratedAssociationMethods
+    sig { returns(T::Array[T.untyped]) }
+    def brand_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def brand_ids=(ids); end
+
+    # This method is created by ActiveRecord on the `User` class because it declared `has_many :brands, through: :user_actors`.
+    # 🔗 [Rails guide for `has_many_through` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-through-association)
+    sig { returns(ActiveRecord::Associations::CollectionProxy) }
+    def brands; end
+
+    sig { params(value: T::Enumerable[T.untyped]).void }
+    def brands=(value); end
+
     # This method is created by ActiveRecord on the `User` class because it declared `has_many :identities`.
     # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
     sig { returns(::UserIdentity::PrivateCollectionProxy) }
@@ -248,33 +262,33 @@ class User
     sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
     def identity_ids=(ids); end
 
-    sig { returns(T::Array[T.untyped]) }
-    def membership_ids; end
-
-    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
-    def membership_ids=(ids); end
-
-    # This method is created by ActiveRecord on the `User` class because it declared `has_many :memberships`.
-    # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
-    sig { returns(::Membership::PrivateCollectionProxy) }
-    def memberships; end
-
-    sig { params(value: T::Enumerable[::Membership]).void }
-    def memberships=(value); end
-
-    sig { returns(T::Array[T.untyped]) }
-    def organization_ids; end
-
-    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
-    def organization_ids=(ids); end
-
-    # This method is created by ActiveRecord on the `User` class because it declared `has_many :organizations, through: :memberships`.
+    # This method is created by ActiveRecord on the `User` class because it declared `has_many :people, through: :user_actors`.
     # 🔗 [Rails guide for `has_many_through` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-through-association)
-    sig { returns(::Organization::PrivateCollectionProxy) }
-    def organizations; end
+    sig { returns(ActiveRecord::Associations::CollectionProxy) }
+    def people; end
 
-    sig { params(value: T::Enumerable[::Organization]).void }
-    def organizations=(value); end
+    sig { params(value: T::Enumerable[T.untyped]).void }
+    def people=(value); end
+
+    sig { returns(T::Array[T.untyped]) }
+    def person_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def person_ids=(ids); end
+
+    sig { returns(T::Array[T.untyped]) }
+    def user_actor_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def user_actor_ids=(ids); end
+
+    # This method is created by ActiveRecord on the `User` class because it declared `has_many :user_actors`.
+    # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
+    sig { returns(::UserActor::PrivateCollectionProxy) }
+    def user_actors; end
+
+    sig { params(value: T::Enumerable[::UserActor]).void }
+    def user_actors=(value); end
   end
 
   module GeneratedAssociationRelationMethods
@@ -773,51 +787,6 @@ class User
     sig { void }
     def email_will_change!; end
 
-    sig { returns(T.nilable(::String)) }
-    def first_name; end
-
-    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
-    def first_name=(value); end
-
-    sig { returns(T::Boolean) }
-    def first_name?; end
-
-    sig { returns(T.nilable(::String)) }
-    def first_name_before_last_save; end
-
-    sig { returns(T.untyped) }
-    def first_name_before_type_cast; end
-
-    sig { returns(T::Boolean) }
-    def first_name_came_from_user?; end
-
-    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
-    def first_name_change; end
-
-    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
-    def first_name_change_to_be_saved; end
-
-    sig { returns(T::Boolean) }
-    def first_name_changed?; end
-
-    sig { returns(T.nilable(::String)) }
-    def first_name_in_database; end
-
-    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
-    def first_name_previous_change; end
-
-    sig { returns(T::Boolean) }
-    def first_name_previously_changed?; end
-
-    sig { returns(T.nilable(::String)) }
-    def first_name_previously_was; end
-
-    sig { returns(T.nilable(::String)) }
-    def first_name_was; end
-
-    sig { void }
-    def first_name_will_change!; end
-
     sig { returns(T.untyped) }
     def id; end
 
@@ -862,51 +831,6 @@ class User
 
     sig { void }
     def id_will_change!; end
-
-    sig { returns(T.nilable(::String)) }
-    def last_name; end
-
-    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
-    def last_name=(value); end
-
-    sig { returns(T::Boolean) }
-    def last_name?; end
-
-    sig { returns(T.nilable(::String)) }
-    def last_name_before_last_save; end
-
-    sig { returns(T.untyped) }
-    def last_name_before_type_cast; end
-
-    sig { returns(T::Boolean) }
-    def last_name_came_from_user?; end
-
-    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
-    def last_name_change; end
-
-    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
-    def last_name_change_to_be_saved; end
-
-    sig { returns(T::Boolean) }
-    def last_name_changed?; end
-
-    sig { returns(T.nilable(::String)) }
-    def last_name_in_database; end
-
-    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
-    def last_name_previous_change; end
-
-    sig { returns(T::Boolean) }
-    def last_name_previously_changed?; end
-
-    sig { returns(T.nilable(::String)) }
-    def last_name_previously_was; end
-
-    sig { returns(T.nilable(::String)) }
-    def last_name_was; end
-
-    sig { void }
-    def last_name_will_change!; end
 
     sig { returns(T.nilable(::ActiveSupport::TimeWithZone)) }
     def last_sign_in_at; end
@@ -997,6 +921,51 @@ class User
 
     sig { void }
     def last_sign_in_ip_will_change!; end
+
+    sig { returns(T.nilable(::String)) }
+    def name; end
+
+    sig { params(value: T.nilable(::String)).returns(T.nilable(::String)) }
+    def name=(value); end
+
+    sig { returns(T::Boolean) }
+    def name?; end
+
+    sig { returns(T.nilable(::String)) }
+    def name_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def name_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def name_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def name_change; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def name_change_to_be_saved; end
+
+    sig { returns(T::Boolean) }
+    def name_changed?; end
+
+    sig { returns(T.nilable(::String)) }
+    def name_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def name_previous_change; end
+
+    sig { returns(T::Boolean) }
+    def name_previously_changed?; end
+
+    sig { returns(T.nilable(::String)) }
+    def name_previously_was; end
+
+    sig { returns(T.nilable(::String)) }
+    def name_was; end
+
+    sig { void }
+    def name_will_change!; end
 
     sig { returns(T.nilable(::String)) }
     def password_digest; end
@@ -1155,19 +1124,16 @@ class User
     def restore_email!; end
 
     sig { void }
-    def restore_first_name!; end
-
-    sig { void }
     def restore_id!; end
-
-    sig { void }
-    def restore_last_name!; end
 
     sig { void }
     def restore_last_sign_in_at!; end
 
     sig { void }
     def restore_last_sign_in_ip!; end
+
+    sig { void }
+    def restore_name!; end
 
     sig { void }
     def restore_password_digest!; end
@@ -1232,23 +1198,11 @@ class User
     sig { returns(T::Boolean) }
     def saved_change_to_email?; end
 
-    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
-    def saved_change_to_first_name; end
-
-    sig { returns(T::Boolean) }
-    def saved_change_to_first_name?; end
-
     sig { returns(T.nilable([T.untyped, T.untyped])) }
     def saved_change_to_id; end
 
     sig { returns(T::Boolean) }
     def saved_change_to_id?; end
-
-    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
-    def saved_change_to_last_name; end
-
-    sig { returns(T::Boolean) }
-    def saved_change_to_last_name?; end
 
     sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def saved_change_to_last_sign_in_at; end
@@ -1261,6 +1215,12 @@ class User
 
     sig { returns(T::Boolean) }
     def saved_change_to_last_sign_in_ip?; end
+
+    sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
+    def saved_change_to_name; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_name?; end
 
     sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def saved_change_to_password_digest; end
@@ -1506,19 +1466,16 @@ class User
     def will_save_change_to_email?; end
 
     sig { returns(T::Boolean) }
-    def will_save_change_to_first_name?; end
-
-    sig { returns(T::Boolean) }
     def will_save_change_to_id?; end
-
-    sig { returns(T::Boolean) }
-    def will_save_change_to_last_name?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_last_sign_in_at?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_last_sign_in_ip?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_name?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_password_digest?; end
