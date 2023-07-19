@@ -14,9 +14,9 @@
 darth_vader_board_of_directors:
   group: board_of_directors
   actor: darth_vader (Person)
-  level: MyString
+  level: owner
 
 luke_skywalker_supporter_of_the_rebels:
   group: supporter_of_the_rebels
   actor: luke_skywalker (Person)
-  level: MyString
+  level: admin

@@ -20,14 +20,14 @@ class OmniauthControllerTest < ActionDispatch::IntegrationTest
 
   test 'should handle proper google_oauth2 auth' do
     get omniauth_callback_url('google_oauth2'),
-        env: { 'omniauth.auth' => OmniAuth::AuthHash.new(auth_hash(:google_oauth2)) }
+        env: { 'omniauth.auth' => OmniAuth::AuthHash.new(google_oauth2_auth_hash) }
 
     assert_redirected_to root_path
   end
 
   test 'should handle invalid auth' do
     get omniauth_callback_url('google_oauth2'),
-        env: { 'omniauth.auth' => OmniAuth::AuthHash.new(auth_hash(:invalid)) }
+        env: { 'omniauth.auth' => OmniAuth::AuthHash.new(invalid_auth_hash) }
 
     assert_redirected_to root_path
   end
@@ -45,23 +45,13 @@ class OmniauthControllerTest < ActionDispatch::IntegrationTest
     assert_response :ok
   end
 
-  sig { params(provider: Symbol).returns(T::Hash[T.untyped, T.untyped]) }
-  def auth_hash(provider)
-    {}.merge(
-      google_oauth2_auth_hash,
-      invalid_auth_hash
-    )[provider]
-  end
-
   sig { returns(T::Hash[T.untyped, T.untyped]) }
   def google_oauth2_auth_hash
     {
-      google_oauth2: {
-        provider: 'google_oauth2',
-        uid: '100000000000000000000',
-        info: {
-          email: 'joe@bloggs.com'
-        }
+      provider: 'google_oauth2',
+      uid: '100000000000000000000',
+      info: {
+        email: 'joe@bloggs.com'
       }
     }
   end
@@ -69,10 +59,8 @@ class OmniauthControllerTest < ActionDispatch::IntegrationTest
   sig { returns(T::Hash[T.untyped, T.untyped]) }
   def invalid_auth_hash
     {
-      invalid: {
-        provider: 'google_oauth2',
-        uid: '1234567'
-      }
+      provider: 'google_oauth2',
+      uid: '1234567'
     }
   end
 end

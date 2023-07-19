@@ -22,7 +22,17 @@ class AudienceTest < ActiveSupport::TestCase
     @audience = T.let(audiences(:one), Audience)
   end
 
-  test 'valid audience' do
+  test 'factories' do
     assert @audience.valid?
+  end
+
+  context 'associations' do
+    should belong_to(:actor)
+    should belong_to(:activity)
+  end
+
+  context 'validations' do
+    should validate_presence_of(:privacy)
+    should validate_inclusion_of(:privacy).in_array(Audience::ALLOWED_PRIVACIES)
   end
 end

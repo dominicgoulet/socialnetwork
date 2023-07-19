@@ -21,7 +21,17 @@ class UserIdentityTest < ActiveSupport::TestCase
     @user_identity = T.let(user_identities(:valid), UserIdentity)
   end
 
-  test 'valid user identity' do
+  test 'factories' do
     assert @user_identity.valid?
+  end
+
+  context 'associations' do
+    should belong_to(:user)
+  end
+
+  context 'validations' do
+    should validate_presence_of(:uid)
+    should validate_presence_of(:provider)
+    should validate_inclusion_of(:provider).in_array(UserIdentity::ALLOWED_PROVIDERS)
   end
 end

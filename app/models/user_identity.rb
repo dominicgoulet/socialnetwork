@@ -15,10 +15,12 @@
 class UserIdentity < ApplicationRecord
   extend T::Sig
 
+  ALLOWED_PROVIDERS = T.let(%w[google_oauth2].freeze, T::Array[String])
+
   # Associations
   belongs_to :user
 
   # Validations
-  validates :provider, presence: true, inclusion: { in: %w[google_oauth2] }
+  validates :provider, presence: true, inclusion: { in: ALLOWED_PROVIDERS }
   validates :uid, presence: true
 end

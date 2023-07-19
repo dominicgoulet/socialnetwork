@@ -21,7 +21,16 @@ class CircleTest < ActiveSupport::TestCase
     @circle = T.let(circles(:colleagues), Circle)
   end
 
-  test 'valid circle' do
+  test 'factories' do
     assert @circle.valid?
+  end
+
+  context 'associations' do
+    should belong_to(:actor)
+    should have_many(:ties)
+  end
+
+  context 'validations' do
+    should validate_presence_of(:display_name)
   end
 end

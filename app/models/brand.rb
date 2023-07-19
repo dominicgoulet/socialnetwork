@@ -18,4 +18,8 @@ class Brand < ApplicationRecord
   # Associations
   has_many :user_actors, inverse_of: :actor
   has_many :user, through: :user_actors
+
+  # Validations
+  validates :display_name, presence: true
+  validates :slug, presence: true, uniqueness: true
 end

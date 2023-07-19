@@ -21,7 +21,18 @@ class BrandTest < ActiveSupport::TestCase
     @brand = T.let(brands(:the_empire), Brand)
   end
 
-  test 'valid brand' do
+  test 'factories' do
     assert @brand.valid?
+  end
+
+  context 'associations' do
+    should have_many(:user_actors)
+    should have_many(:user)
+  end
+
+  context 'validations' do
+    should validate_presence_of(:display_name)
+    should validate_presence_of(:slug)
+    should validate_uniqueness_of(:slug)
   end
 end

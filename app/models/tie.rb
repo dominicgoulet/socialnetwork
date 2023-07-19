@@ -18,4 +18,6 @@ class Tie < ApplicationRecord
   # Associations
   belongs_to :circle
   belongs_to :actor, polymorphic: true
+
+  # Validations
 end

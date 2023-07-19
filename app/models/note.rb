@@ -17,4 +17,7 @@ class Note < ApplicationRecord
 
   # Associations
   belongs_to :actor, polymorphic: true
+
+  # Validations
+  validates :content, presence: true
 end

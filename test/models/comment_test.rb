@@ -21,7 +21,15 @@ class CommentTest < ActiveSupport::TestCase
     @comment = T.let(comments(:one), Comment)
   end
 
-  test 'valid comment' do
+  test 'factories' do
     assert @comment.valid?
+  end
+
+  context 'associations' do
+    should belong_to(:actor)
+  end
+
+  context 'validations' do
+    should validate_presence_of(:content)
   end
 end

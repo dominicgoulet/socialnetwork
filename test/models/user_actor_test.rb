@@ -20,7 +20,12 @@ class UserActorTest < ActiveSupport::TestCase
     @user_actor = T.let(user_actors(:david_prowse_darth_vader), UserActor)
   end
 
-  test 'valid user actor' do
+  test 'factories' do
     assert @user_actor.valid?
+  end
+
+  context 'associations' do
+    should belong_to(:user)
+    should belong_to(:actor)
   end
 end

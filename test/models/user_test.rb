@@ -33,8 +33,22 @@ class UserTest < ActiveSupport::TestCase
     @user = T.let(users(:david_prowse), User)
   end
 
-  test 'valid user' do
+  test 'factories' do
     assert @user.valid?
+  end
+
+  context 'associations' do
+    should have_many(:identities)
+    should have_many(:user_actors)
+    should have_many(:brands).through(:user_actors)
+    should have_many(:people).through(:user_actors)
+  end
+
+  context 'validations' do
+    should validate_presence_of(:email)
+    should validate_uniqueness_of(:email)
+    should validate_presence_of(:password)
+    should validate_length_of(:password).is_at_least(4).on(:create)
   end
 
   test 'invalid without email' do
@@ -78,24 +92,28 @@ class UserTest < ActiveSupport::TestCase
 
   test '.change_email! fails with invalid email' do
     refute @user.change_email!('darth.vader')
-    refute @user.unconfirmed_email.present?
+    assert_nil @user.unconfirmed_email
   end
 
   test '.change_email! manages unconfirmed_email' do
     assert @user.change_email!('darth.vader2@theempire.org')
-    assert @user.unconfirmed_email == 'darth.vader2@theempire.org'
+    assert_equal @user.unconfirmed_email, 'darth.vader2@theempire.org'
 
     assert @user.cancel_change_email!
-    assert @user.unconfirmed_email.nil?
+    assert_nil @user.unconfirmed_email
 
     assert @user.change_email!('darth.vader2@theempire.org')
     assert @user.confirm!
-    assert @user.email == 'darth.vader2@theempire.org'
-    assert @user.unconfirmed_email.nil?
+    assert_equal @user.email, 'darth.vader2@theempire.org'
+    assert_nil @user.unconfirmed_email
   end
 
   test '.send_reset_password_instructions! sets a new password reset token and returns true' do
     assert @user.send_reset_password_instructions!
-    assert @user.reset_password_token.present?
+    assert_not_nil @user.reset_password_token
+  end
+
+  test '.complete_setup! completes the setup process and returns true' do
+    assert @user.complete_setup!
   end
 end

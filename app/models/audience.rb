@@ -16,10 +16,12 @@
 class Audience < ApplicationRecord
   extend T::Sig
 
-  # Associations
-  belongs_to :activity
-  belongs_to :actor, polymorphic: true
+  ALLOWED_PRIVACIES = T.let(%w[public circles limited].freeze, T::Array[String])
 
-  # Enumerations
-  enum privacy: %i[public circles limited], _prefix: :is
+  # Associations
+  belongs_to :actor, polymorphic: true
+  belongs_to :activity
+
+  # Validations
+  validates :privacy, presence: true, inclusion: { in: ALLOWED_PRIVACIES }
 end

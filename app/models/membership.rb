@@ -16,7 +16,12 @@
 class Membership < ApplicationRecord
   extend T::Sig
 
+  ALLOWED_LEVELS = T.let(%w[owner admin member].freeze, T::Array[String])
+
   # Associations
   belongs_to :group
   belongs_to :actor, polymorphic: true
+
+  # Validations
+  validates :level, presence: true, inclusion: { in: ALLOWED_LEVELS }
 end

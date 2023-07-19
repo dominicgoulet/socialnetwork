@@ -14,9 +14,9 @@
 one:
   activity: one
   actor: darth_vader (Person)
-  privacy: MyString
+  privacy: public
 
 two:
   activity: two
   actor: darth_vader (Person)
-  privacy: MyString
+  privacy: circles

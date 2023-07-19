@@ -21,8 +21,12 @@ class TieTest < ActiveSupport::TestCase
     @tie = T.let(ties(:colleagues_darth_vader_grand_moff_tarkin), Tie)
   end
 
-  test 'valid tie' do
-    assert @tie.circle.present?
-    # assert @tie.valid?
+  test 'factories' do
+    assert @tie.valid?
+  end
+
+  context 'associations' do
+    should belong_to(:circle)
+    should belong_to(:actor)
   end
 end

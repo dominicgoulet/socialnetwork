@@ -18,5 +18,7 @@ class Circle < ApplicationRecord
   # Associations
   belongs_to :actor, polymorphic: true
   has_many :ties
-  # has_many :actors, through: :ties
+
+  # Validations
+  validates :display_name, presence: true
 end

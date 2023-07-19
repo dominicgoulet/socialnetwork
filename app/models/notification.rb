@@ -19,4 +19,6 @@ class Notification < ApplicationRecord
   # Associations
   belongs_to :actor, polymorphic: true
   belongs_to :activity
+
+  # Validations
 end

@@ -22,7 +22,12 @@ class NotificationTest < ActiveSupport::TestCase
     @notification = T.let(notifications(:one), Notification)
   end
 
-  test 'valid notification' do
+  test 'factories' do
     assert @notification.valid?
+  end
+
+  context 'associations' do
+    should belong_to(:actor)
+    should belong_to(:activity)
   end
 end

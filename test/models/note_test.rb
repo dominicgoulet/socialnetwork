@@ -21,7 +21,15 @@ class NoteTest < ActiveSupport::TestCase
     @note = T.let(notes(:one), Note)
   end
 
-  test 'valid note' do
+  test 'factories' do
     assert @note.valid?
+  end
+
+  context 'associations' do
+    should belong_to(:actor)
+  end
+
+  context 'validations' do
+    should validate_presence_of(:content)
   end
 end

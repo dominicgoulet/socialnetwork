@@ -20,7 +20,17 @@ class GroupTest < ActiveSupport::TestCase
     @group = T.let(groups(:board_of_directors), Group)
   end
 
-  test 'valid group' do
+  test 'factories' do
     assert @group.valid?
+  end
+
+  context 'associations' do
+    should have_many(:memberships)
+  end
+
+  context 'validations' do
+    should validate_presence_of(:display_name)
+    should validate_presence_of(:privacy)
+    should validate_inclusion_of(:privacy).in_array(Group::ALLOWED_PRIVACIES)
   end
 end

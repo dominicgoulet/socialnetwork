@@ -20,7 +20,18 @@ class PersonTest < ActiveSupport::TestCase
     @person = T.let(people(:darth_vader), Person)
   end
 
-  test 'valid person' do
+  test 'factories' do
     assert @person.valid?
+  end
+
+  context 'associations' do
+    should have_many(:user_actors)
+    should have_many(:user)
+  end
+
+  context 'validations' do
+    should validate_presence_of(:display_name)
+    should validate_presence_of(:slug)
+    should validate_uniqueness_of(:slug)
   end
 end

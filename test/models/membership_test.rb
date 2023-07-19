@@ -22,7 +22,17 @@ class MembershipTest < ActiveSupport::TestCase
     @membership = T.let(memberships(:darth_vader_board_of_directors), Membership)
   end
 
-  test 'valid membership' do
+  test 'factories' do
     assert @membership.valid?
+  end
+
+  context 'associations' do
+    should belong_to(:group)
+    should belong_to(:actor)
+  end
+
+  context 'validations' do
+    should validate_presence_of(:level)
+    should validate_inclusion_of(:level).in_array(Membership::ALLOWED_LEVELS)
   end
 end

@@ -14,7 +14,12 @@
 class Group < ApplicationRecord
   extend T::Sig
 
+  ALLOWED_PRIVACIES = T.let(%w[public private secret].freeze, T::Array[String])
+
   # Associations
   has_many :memberships
-  has_many :actors, through: :ties
+
+  # Validations
+  validates :display_name, presence: true
+  validates :privacy, presence: true, inclusion: { in: ALLOWED_PRIVACIES }
 end
